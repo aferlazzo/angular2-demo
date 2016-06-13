@@ -1,0 +1,14 @@
+h1 {
+	font-size: 2.5em;
+	background-color: #FE8300;
+	margin: 0;
+	font-family: fantasy, sans-serif;
+	color: #fff;
+	padding: .25em;
+}
+.nav.navbar-nav {
+	margin-bottom: 0;
+}
+.nav.navbar-nav .active .router-link-active {
+	font-weight: bold;
+}

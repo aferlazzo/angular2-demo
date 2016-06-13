@@ -1,0 +1,4 @@
+import { Driver }  from './driver';
+
+export var MOCK_DRIVERS: Driver[] = [{"drivername":"Driver1","password":"rr","ability":"Bicycle","firstname":"Anthony","lastname":"Ferlazzo","email":"aferlazzo@gmail.com","address":"5558 W. Shady Grove Drive","city":"Tucson","state":"Arizona","zip":"85742","phone":"9253995359","selected":false},{"drivername":"Rocky","password":"rrr","ability":"Scooter","firstname":"Rocky","lastname":"Balboa","email":"rocky@movie.comq","address":"111 Hollywood Dr","city":"Hollywood","state":"California","zip":"94321","phone":"310-999-1212","selected":false},{"drivername":"RockyII","password":"www","ability":"Motorcycle","firstname":"Slyvester","lastname":"Stallone","email":"sly@movies.com","address":"77 Sunset Strip","city":"Los Angeles","state":"California","zip":"93333","phone":"818-555-1212","selected":false}];
+

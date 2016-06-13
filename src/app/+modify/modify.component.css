@@ -1,0 +1,55 @@
+a {
+	cursor: pointer;
+	cursor: hand;
+}
+button {
+	font-family: Arial;
+	background-color: #eee;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 4px;
+	cursor: pointer;
+	cursor: hand;
+}
+button:hover {
+	background-color: #cfd8dc;
+}
+button:disabled {
+	background-color: #eee;
+	color: #aaa;
+	cursor: auto;
+}
+
+.btn.dropdown-toggle {
+	height: 2.5em;
+	width: 100%;
+	text-align: left;
+	border: 1px solid #ccc;
+}
+
+#driver_ability .dropdown-menu {
+	width: 100%;
+}
+
+#my-alert {
+	width: 20%;
+	min-width: 30rem;
+	height: auto;
+	position: absolute;
+	top: calc(50% - 20%);
+	left: calc(50% - 15rem);
+	border:2px solid orangered;
+	border-radius: 4px;
+	background-color:#fff;
+}
+#my-alert p {
+	margin: 2rem;
+	font-size:1.5em
+}
+
+#my-alert p:last-child{
+	text-align: right;
+}
+.hide_alert {
+	display:none;
+}
