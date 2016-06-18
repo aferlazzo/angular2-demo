@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ListComponent } from './+list';
-import { Router, Routes , ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
+import { Router, Routes , ROUTER_DIRECTIVES, ROUTER_PROVIDERS}
+    from '@angular/router';
 import { ModifyComponent } from './+modify';
 import { AddComponent } from './+add';
 import { DeleteComponent } from './+delete';
-import { Driver }                       from './shared/driver';
-import { DriverService }                from './shared/driver.service';
+import { Driver } from './shared/driver';
+import { DriverService } from './shared/driver.service';
 
 @Component({
   moduleId: module.id,
@@ -22,8 +23,8 @@ import { DriverService }                from './shared/driver.service';
   {path: '/delete', component: DeleteComponent}
 ])
 export class Angular2DemoAppComponent implements OnInit{
-  constructor(private driverService: DriverService,
-              private router: Router) {}
+  constructor( private driverService: DriverService,
+               private router:Router) {}
 
   drivers:Driver[];
 
@@ -37,6 +38,10 @@ export class Angular2DemoAppComponent implements OnInit{
       console.info('app.component.ts There are ' +
           this.drivers.length + ' driver records being returned');
     }
+
+    //jump to the list view by default (since there is no default route defined)
+    this.router.navigate(['/list']);
+    this.driverService.active_menu = "List";
   }
 
   /*

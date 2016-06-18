@@ -28,13 +28,6 @@
           <a [routerLink]="['/add']"
              (click)='change_active_menu("Add")'>Add A Driver</a>
         </li>
-
-        <!--
-					We use a 'Route parameters object' to specify the drivername we want to modify or delete
-					by making it the second item of the link parameters array. In the modify.component.ts
-					file we read the query string
-				-->
-
         <li [class.active]="driverService.active_menu=='Modify'">
           <a [routerLink]="['/modify']"
              (click)='change_active_menu("Modify")'>Modify Selected</a>
@@ -48,3 +41,5 @@
   </div>
 </nav>
 <router-outlet></router-outlet>
+
+
