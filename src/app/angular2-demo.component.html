@@ -7,6 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">ng2 Reference App</a>
     </div>
@@ -35,6 +36,10 @@
         <li [class.active]="driverService.active_menu=='Delete'">
           <a [routerLink]="['/delete']"
              (click)='change_active_menu("Delete")'>Delete Selected</a>
+        </li>
+        <li [class.active]="driverService.active_menu=='About'">
+          <a [routerLink]="['/about']"
+             (click)='change_active_menu("About")'>About</a>
         </li>
       </ul>
     </div>

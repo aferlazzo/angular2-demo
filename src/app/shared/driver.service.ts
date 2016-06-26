@@ -268,7 +268,8 @@ export class DriverService {
       "city": driver.city,
       "state": driver.state,
       "zip": driver.zip,
-      "phone": driver.phone
+      "phone": driver.phone,
+      "selected":false
     };
 
     let stringified_json = JSON.stringify(driver_json_input);

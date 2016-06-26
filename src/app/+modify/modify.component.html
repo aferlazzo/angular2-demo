@@ -11,9 +11,20 @@
           </label>
           <input id="driver.drivername" [(ngModel)]="driver.drivername" class="form-control"
                  type="text" ngControl="drivername" disabled>
-          <label class="control-label" for="driver.password">
-            Password
+
+          <label class="control-label" for="driver.firstname">
+            First Name
           </label>
+          <input id="driver.firstname" [(ngModel)]="driver.firstname" class="form-control"
+                 type="text" ngControl="firstname" required>
+
+          <label class="control-label" for="driver.lastname">
+            Last Name
+          </label>
+          <input id="driver.lastname" [(ngModel)]="driver.lastname" class="form-control"
+                 type="text" ngControl="lastname" required>
+
+          <label class="control-label" for="driver.password">Password</label>
           <input id="driver.password" [(ngModel)]="driver.password" class="form-control"
                  type="text" ngControl="password" required>
 
@@ -22,16 +33,6 @@
             <option *ngFor="let ab of driving_ability_list" [value]="ab">{{ab}}</option>
           </select>
 
-          <label class="control-label" for="driver.firstname">
-            First Name
-          </label>
-          <input id="driver.firstname" [(ngModel)]="driver.firstname" class="form-control"
-                 type="text" ngControl="firstname" required>
-          <label class="control-label" for="driver.lastname">
-            Last Name
-          </label>
-          <input id="driver.lastname" [(ngModel)]="driver.lastname" class="form-control"
-                 type="text" ngControl="lastname" required>
           <label class="control-label" for="driver.email">
             Email
           </label>
@@ -65,33 +66,33 @@
           </label>
           <input id="driver.phone" [(ngModel)]="driver.phone" class="form-control"
                  type="text" ngControl="phone" required>
-        </div>
-      </div>
-      <div class="row">
-        <span *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</span>
-        <span *ngIf="successMessage" class="alert alert-success">{{successMessage}}</span>
-      </div>
+          <div class="row">
+            <span *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</span>
+            <span *ngIf="successMessage" class="alert alert-success">{{successMessage}}</span>
+          </div>
 
-      <div class="row btn col-md-offset-8 col-md-2">
-          <span class="col-md-8 text-right">
-            <input type="button" class="btn" value="Cancel" (click)="cancel_modify()">
-          </span>
-          <span class="col-md-4 text-right">
-              <input type="submit" class="btn btn-primary" (click)="modify_driver(driver)"
-                     [disabled]="!f.form.valid" value="Modify">
-          </span>
+          <div class="form btn_row">
+              <span class="col-md-7 text-right">
+                <input type="button" class="btn" value="Cancel" (click)="cancel_modify()">
+              </span>
+              <span class="col-md-5 text-right">
+                  <input type="submit" class="btn btn-primary" (click)="modify_driver(driver)"
+                         [disabled]="!f.form.valid" value="Modify">
+              </span>
+          </div>
+        </div>
       </div>
     </div>
   </form>
-  <div id="my-alert" [ngClass]="{hide_alert:selected_index != -1}">
-    <p>Select one driver to modify</p>
-    <p><button class="btn" (click)="cancel_modify()">Ok</button></p>
-  </div>
 </div>
+<div id="my-alert" [ngClass]="{hide_alert:selected_index != -1}">
+  <p>Select one driver to modify</p>
+  <p><button class="btn" (click)="cancel_modify()">Ok</button></p>
+</div>
+
 <div class="footer navbar-fixed-bottom">
   <footer>
-    <p class="row text-center">This MVP is brought to you by none other than
-      Tony Ferlazzo, Web Developer Extraordinaire, June 2016</p>
+    <p class="row text-center">&copy; Tony Ferlazzo, 2016</p>
   </footer>
 </div>
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, Routes , ROUTER_DIRECTIVES, ROUTER_PROVIDERS}from '@angular/router';
+import { AboutComponent } from './+about';
 import { ListComponent } from './+list';
-import { Router, Routes , ROUTER_DIRECTIVES, ROUTER_PROVIDERS}
-    from '@angular/router';
 import { ModifyComponent } from './+modify';
 import { AddComponent } from './+add';
 import { DeleteComponent } from './+delete';
@@ -20,7 +20,8 @@ import { DriverService } from './shared/driver.service';
   {path: '/list', component: ListComponent},
   {path: '/modify', component: ModifyComponent},
   {path: '/add', component: AddComponent},
-  {path: '/delete', component: DeleteComponent}
+  {path: '/delete', component: DeleteComponent},
+  {path: '/about', component: AboutComponent}
 ])
 export class Angular2DemoAppComponent implements OnInit{
   constructor( private driverService: DriverService,

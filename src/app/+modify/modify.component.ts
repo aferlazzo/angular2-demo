@@ -27,8 +27,7 @@ export class ModifyComponent implements OnInit {
   };
 
   // for dropdown lists
-  driving_ability_list = ['Bicycle', 'Scooter', 'Motorcycle', 'Car (Automatic Transmission)',
-    'Car (Manual Transmission)', 'Commercial Truck'];
+  driving_ability_list = ['Bicycle', 'Scooter', 'Motorcycle', 'Car (stick)', 'Car (automatic)', 'Truck'];
 
   state_abbreviation_list = [
     'Alabama',

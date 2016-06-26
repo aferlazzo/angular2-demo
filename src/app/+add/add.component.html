@@ -10,6 +10,14 @@
           <input id="driver_drivername" [(ngModel)]="driver.drivername" class="form-control"
                  type="text" ngControl="drivername" required autofocus>
 
+          <label class="control-label" for="driver.firstname">First Name</label>
+          <input id="driver.firstname" [(ngModel)]="driver.firstname" class="form-control"
+                 type="text" ngControl="firstname" required>
+
+          <label class="control-label" for="driver_lastname">Last Name</label>
+          <input id="driver_lastname" [(ngModel)]="driver.lastname" class="form-control"
+                 type="text" ngControl="lastname" required>
+
           <label class="control-label" for="driver_password">Password</label>
           <input id="driver_password" [(ngModel)]="driver.password" class="form-control"
                  type="text" ngControl="password" required>
@@ -18,14 +26,6 @@
           <select id="driver_ability" class="form-control" required [(ngModel)]="driver.ability">
             <option *ngFor="let ab of driving_ability_list" [value]="ab">{{ab}}</option>
           </select>
-
-          <label class="control-label" for="driver.firstname">First Name</label>
-          <input id="driver.firstname" [(ngModel)]="driver.firstname" class="form-control"
-                 type="text" ngControl="firstname" required>
-
-          <label class="control-label" for="driver_lastname">Last Name</label>
-          <input id="driver_lastname" [(ngModel)]="driver.lastname" class="form-control"
-                 type="text" ngControl="lastname" required>
 
           <label class="control-label" for="driver_email">Email</label>
           <input id="driver_email" [(ngModel)]="driver.email" class="form-control"
@@ -53,11 +53,16 @@
           <input id="driver_phone" [(ngModel)]="driver.phone" class="form-control"
                  type="text" ngControl="phone" required>
 
+          <div class="row">
+            <span *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</span>
+            <span *ngIf="successMessage" class="alert alert-success">{{successMessage}}</span>
+          </div>
+
           <div class="form btn_row">
-              <span class="col-md-6 text-right">
+              <span class="col-md-7 text-right">
                 <input type="button" class="btn" value="Cancel" (click)="cancel_add()">
               </span>
-              <span class="col-md-6 text-right">
+              <span class="col-md-5 text-right">
                   <input type="submit" class="btn btn-primary" (click)="add_driver(driver)"
                          [disabled]="!f.form.valid" value="Add">
               </span>
@@ -74,8 +79,7 @@
 </div>
 <div class="footer navbar-fixed-bottom">
   <footer>
-    <p class="row text-center">This MVP is brought to you by none other than
-      Tony Ferlazzo, Web Developer Extraordinaire, June 2016</p>
+    <p class="row text-center">&copy; Tony Ferlazzo, 2016</p>
   </footer>
 </div>
 

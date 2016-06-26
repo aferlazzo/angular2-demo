@@ -17,7 +17,7 @@ import { DriverService }      from '../shared/driver.service';
 export class ListComponent implements OnInit {
 
   constructor(private driverService: DriverService) {}
-
+  
   drivers = this.driverService.driverArray;
 
   ngOnInit() {
