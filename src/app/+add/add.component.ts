@@ -1,6 +1,12 @@
 import { Component, OnInit }  from '@angular/core';
-import { FORM_DIRECTIVES ,
-    FORM_PROVIDERS }          from '@angular/common';
+import {
+    FormBuilder,
+    Validators,
+    Control,
+    ControlGroup,
+    FORM_DIRECTIVES
+} from '@angular/common';
+import { DrivernameValidator } from '../shared/drivernameValidator';
 import { Router }             from '@angular/router';
 import { Driver }             from '../shared/driver';
 import { DriverService }      from '../shared/driver.service';
@@ -11,14 +17,21 @@ import { SelectService }      from '../shared/select.service';
   selector: 'app-add',
   templateUrl: 'add.component.html',
   styleUrls: ['add.component.css'],
-  providers: [ FORM_PROVIDERS, SelectService, Driver ],
+  providers: [ SelectService, Driver ],
   directives: [ FORM_DIRECTIVES ]
 })
-export class AddComponent implements OnInit{
+
+export class AddComponent implements OnInit {
+
   constructor (
       private router: Router,
       private driverService: DriverService
   ) { }
+
+  ngOnInit() {
+    this.driver = this.clear_driver(this.driver);
+    console.info('add.component.ts initialized');
+  }
 
   private message = {
     success: '',
@@ -29,64 +42,14 @@ export class AddComponent implements OnInit{
   driving_ability_list = ['Bicycle', 'Scooter', 'Motorcycle', 'Car (stick)', 'Car (automatic)', 'Truck'];
 
   state_abbreviation_list = [
-    'Alabama',
-    'Alaska',
-    'Arizona',
-    'Arkansas',
-    'California',
-    'Colorado',
-    'Connecticut',
-    'Delaware',
-    'District of Columbia',
-    'Florida',
-    'Georgia',
-    'Hawaii',
-    'Idaho',
-    'Illinois',
-    'Indiana',
-    'Iowa',
-    'Kansas',
-    'Kentucky',
-    'Louisiana',
-    'Maine',
-    'Maryland',
-    'Massachusetts',
-    'Michigan',
-    'Minnesota',
-    'Mississippi',
-    'Missouri',
-    'Montana',
-    'Nebraska',
-    'Nevada',
-    'New Hampshire',
-    'New Jersey',
-    'New Mexico',
-    'New York',
-    'North Carolina',
-    'North Dakota',
-    'Ohio',
-    'Oklahoma',
-    'Oregon',
-    'Pennsylvania',
-    'Puerto Rico',
-    'Rhode Island',
-    'South Carolina',
-    'South Dakota',
-    'Tennessee',
-    'Texas',
-    'Utah',
-    'Vermont',
-    'Virginia',
-    '(U.S.) Virgin Islands',
-    'Washington',
-    'West Virginia',
-    'Wisconsin',
-    'Wyoming'
-  ];
+    'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL',
+    'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MH', 'MA', 'MI', 'FM', 'MN', 'MS', 'MO', 'MT', 'NE',
+    'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC',
+    'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'VI', 'WA', 'WV', 'WI', 'WY'];
 
   driver = {
     selected: false,
-    drivername: 'new driver',
+    drivername: '',
     password: '',
     ability: '',
     firstname: '',
@@ -105,6 +68,32 @@ export class AddComponent implements OnInit{
 
   submitted = false;
 
+  /*
+
+  A Control can be bound to an input element, and takes 3 arguments (all optional);
+  a default value, a validator and a asynchronous validator.
+  For example
+
+  this.drivername = new Control('Default value', Validators.required, UsernameValidator.checkIfAvailable);
+
+  Which can be used in your HTML using the "ngControl" directive.
+
+  <input required type="text" ngControl="drivername" />
+
+  And use the following HTML to show the related error message
+
+  <div *ngIf="drivername.dirty && !drivername.valid">
+  <p *ngIf="drivername.errors.minlength">
+  A drivername needs to be at least 4 characters.
+  </p>
+  </div>
+
+  */
+  
+
+
+
+
   clear_driver(driver:Driver) {
     driver.selected = false;
     driver.drivername = '';
@@ -121,11 +110,6 @@ export class AddComponent implements OnInit{
 
     this.chosen_ability = 'Select';
     return driver;
-  }
-
-
-  ngOnInit() {
-    this.driver = this.clear_driver(this.driver);
   }
 
   cancel_add() {

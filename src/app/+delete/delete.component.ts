@@ -1,4 +1,4 @@
-import { Component, OnInit }  from '@angular/core';
+import { Component, OnInit, OnDestroy}  from '@angular/core';
 import { HTTP_PROVIDERS }     from '@angular/http';
 import { Router }             from '@angular/router';
 import { Driver }             from '../shared/driver';
@@ -29,6 +29,9 @@ export class DeleteComponent implements OnInit {
   milliseconds_to_delay:number;
   first_selected_row_index:number;
 
+  ngOnDestroy() {
+    this.clearTimeout();
+  }
 
   ngOnInit() {
     // find first selected row

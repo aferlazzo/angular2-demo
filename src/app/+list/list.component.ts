@@ -1,6 +1,5 @@
-import { Component, OnInit }  from '@angular/core';
-import { FORM_DIRECTIVES,
-    FORM_PROVIDERS }    from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FORM_DIRECTIVES, FORM_PROVIDERS } from '@angular/common';
 import { NgClass }            from '@angular/common';
 import { Driver }             from '../shared/driver';
 import { DriverService }      from '../shared/driver.service';
@@ -17,11 +16,11 @@ import { DriverService }      from '../shared/driver.service';
 export class ListComponent implements OnInit {
 
   constructor(private driverService: DriverService) {}
-  
+
   drivers = this.driverService.driverArray;
 
   ngOnInit() {
-    console.info('list.component.ts initialized');
+    console.info('list.component.ts initialized, emitted custom event for List view');
   }
 
   errorMessage = "";
@@ -32,8 +31,8 @@ export class ListComponent implements OnInit {
    row_selected is the click handler toggling row selection
    */
   row_selected(i:number) {
-    console.log(`row ${i} clicked`);
-
     this.driverService.driverArray[i].selected = !this.driverService.driverArray[i].selected;
+    let s = this.drivers[i].selected == true ? "" : " NOT";
+    console.log(`Row ${i} is${s} selected`);
   }
 }

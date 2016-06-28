@@ -27,7 +27,8 @@ td:hover {
 	cursor:pointer;
 }
 .selected_background {
-	background-color: #D1E3E3 !important;
+	/*background-color: #D1E3E3 !important;*/
+	background-color: #ffe7d1;
 }
 .container-fluid .panel-heading {
 	display: none;
@@ -106,14 +107,16 @@ td:hover {
 	flex: 2;
 }
 
-/* 1 - drivername, 9 - zip, 10 - phone */
+/* 1 - drivername, 9 - zip */
 .container-fluid .panel-body table.flex-widths tr td:nth-child(1),
 .container-fluid .panel-body table.flex-widths tr th:nth-child(1),
 
 .container-fluid .panel-body table.flex-widths tr td:nth-child(9),
-.container-fluid .panel-body table.flex-widths tr th:nth-child(9),
-
-.container-fluid .panel-body table.flex-widths tr td:nth-child(10),
-.container-fluid .panel-body table.flex-widths tr th:nth-child(10) {
+.container-fluid .panel-body table.flex-widths tr th:nth-child(9) {
 	flex: 0.75;
+}
+/* 8 - state abbreviation */
+.container-fluid .panel-body table.flex-widths tr td:nth-child(8),
+.container-fluid .panel-body table.flex-widths tr th:nth-child(8) {
+	flex: 0.5;
 }

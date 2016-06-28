@@ -13,24 +13,30 @@ import { DriverService } from './shared/driver.service';
   selector: 'angular2-demo-app',
   templateUrl: 'angular2-demo.component.html',
   styleUrls: ['angular2-demo.component.css'],
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, ListComponent, AddComponent, ModifyComponent, DeleteComponent],
   providers: [ROUTER_PROVIDERS, DriverService]
 })
 @Routes([
-  {path: '/list', component: ListComponent},
-  {path: '/modify', component: ModifyComponent},
-  {path: '/add', component: AddComponent},
-  {path: '/delete', component: DeleteComponent},
-  {path: '/about', component: AboutComponent}
+  {path: 'list', component: ListComponent},
+  {path: 'modify', component: ModifyComponent},
+  {path: 'add', component: AddComponent},
+  {path: 'delete', component: DeleteComponent},
+  {path: 'about', component: AboutComponent}
 ])
 export class Angular2DemoAppComponent implements OnInit{
   constructor( private driverService: DriverService,
                private router:Router) {}
 
   drivers:Driver[];
+  subcomponent_name: string;
+
+  ngAfterContentChecked() {
+    this.subcomponent_name = this.driverService.active_menu;
+  }
 
   ngOnInit() {
     console.info('app.component.ts initialized');
+    this.subcomponent_name = this.driverService.active_menu;
 
     // this is where the drivers list gets loaded....
     this.driverService.fillDriverArray();
@@ -44,6 +50,7 @@ export class Angular2DemoAppComponent implements OnInit{
     this.router.navigate(['/list']);
     this.driverService.active_menu = "List";
   }
+
 
   /*
    change_active_menu is the click handler for the navbar in the app.component.html file.

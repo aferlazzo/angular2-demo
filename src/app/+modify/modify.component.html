@@ -1,7 +1,4 @@
 <div class="container-fluid">
-  <div class="row">
-    <h1 class="col-md-offset-2 col-md-8 text-center">Modify Driver</h1>
-  </div>
   <form #f="ngForm" class="driver_form" [hidden]="submitted">
     <div class="form row">
       <div class="form-group">
@@ -37,7 +34,7 @@
             Email
           </label>
           <input id="driver.email" [(ngModel)]="driver.email" class="form-control"
-                 type="text" ngControl="email" required>
+                 type="email" ngControl="email" required>
         </div>
         <div class="col-md-4">
           <label class="control-label" for="driver.address">
@@ -65,6 +62,8 @@
             Phone
           </label>
           <input id="driver.phone" [(ngModel)]="driver.phone" class="form-control"
+                 type="tel" ngControl="phone" required pattern="[2-9][0-9]{2}-[0-9]{3}-[0-9]{4}"
+                 title="North American format: XXX-XXX-XXXX"
                  type="text" ngControl="phone" required>
           <div class="row">
             <span *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</span>

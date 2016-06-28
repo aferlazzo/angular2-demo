@@ -1,8 +1,15 @@
+.menu_name {
+	margin: -4.5em -2.5em 1.9em 8.9em;
+	display: block;
+	position: relative;
+	width: 5.3em;
+	text-align: left;
+}
 h1 {
-	font-size: 2.5em;
+	font-size: 3em;
 	background-color: #FE8300;
 	margin: 0;
-	font-family: fantasy, sans-serif;
+	font-family: "open sans", sans-serif;
 	color: #fff;
 	padding: .25em;
 }
