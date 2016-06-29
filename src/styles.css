@@ -54,11 +54,19 @@ button:disabled {
 
 /* Navigation link styles */
 .navbar {
-  margin-bottom: 2rem;
-  height: 90px;
+  margin-bottom: 0.1rem;
+  height: 8rem;
 }
-ul.nav.navbar-nav {
+@media (min-width: 0) {
+  .navbar-nav > li {
+    float: left;
+    width: 8em;
+    margin-left: -1em;
+  }
+}
+.nav.navbar-nav {
   width: 100%;
+  margin: 7.5px 0;
 }
 nav a {
 padding: 5px 10px;
@@ -73,14 +81,19 @@ nav a:hover {
 color: #039be5;
 background-color: #CFD8DC;
 }
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: transparent;
+}
 nav .fa {
 display: inline-block;
-font-size: 3rem;
+font-size: 2.1em;
 border-radius: 50%;
-margin: 0 auto 1rem;
-padding: 1.2rem;
-padding-left: 1.5rem;
-width: 5.3rem;
+margin: 0 auto -0.5em;
+padding: 0.6em;
+padding-left: 1.5em;
+width: 2.3em;
 color: #fff;
 background-color: #2a8eff;
 }
@@ -88,21 +101,12 @@ background-color: #2a8eff;
 text-align: center;
 }
 nav .fa-list-ul,
-nav .fa-exchange {
-padding-left: 1.2rem;
-}
+nav .fa-exchange,
 nav .fa-plus,
 nav .fa-minus,
 nav .fa-info {
-padding-left: 1.3rem;
+padding-left: 0.7em;
 }
-
-/*
-nav a.router-link-active {
-color: #039be5;
-background-color: #d8f3ff;
-}
-*/
 /* items class */
 .items {
   margin: 0 0 2em 0;
@@ -187,24 +191,29 @@ background-color: #d8f3ff;
 }
 
 
-.footer {
+footer {
   color: #fff;
   text-align: center;
   background: #FE8300;
   padding-top: 1em;
+  position: fixed;
+  bottom: 0;
+  width:100%;
 }
-
-
 
 form {
-    margin-bottom: 3em;
-    height: 67%;
+    margin-bottom: 0;
+    height: auto;
 }
-@media (min-width: 768px) {
+@media (min-width: 0) {
   .navbar-nav > li > a {
-    padding-bottom: 10px;
+    padding-bottom: 1.1em;
+    position: relative;
+    display: block;
+    padding: 0;
   }
   .navbar-nav > li:last-child {
     float: right;
+    margin-left: -1em;
   }
 }

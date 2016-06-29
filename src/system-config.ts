@@ -1,3 +1,7 @@
+// SystemJS configuration file, see links for more information
+// https://github.com/systemjs/systemjs
+// https://github.com/systemjs/systemjs/blob/master/docs/config-api.md
+
 /***********************************************************************************************
  * User Configuration.
  **********************************************************************************************/
@@ -29,16 +33,6 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
-  'app/list',
-  'app/add',
-  'app/modify',
-  'app/delete',
-  'app/+list',
-  'app/+modify',
-  'app/+add',
-  'app/+delete',
-  'app/about',
-  'app/+about',
   /** @cli-barrel */
 ];
 

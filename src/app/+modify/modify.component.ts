@@ -1,6 +1,4 @@
 import { Component, OnInit }  from '@angular/core';
-import { FORM_DIRECTIVES ,
-    FORM_PROVIDERS }          from '@angular/common';
 import { Router }             from '@angular/router';
 import { NgClass }            from '@angular/common';
 import { Driver }             from '../shared/driver';
@@ -11,8 +9,8 @@ import { SelectService }      from '../shared/select.service';
   selector: 'app-modify',
   templateUrl: 'modify.component.html',
   styleUrls: ['modify.component.css'],
-  providers:  [  FORM_PROVIDERS, SelectService, Driver ],
-  directives: [ FORM_DIRECTIVES, NgClass ]})
+  providers:  [ SelectService, Driver ],
+  directives: [ NgClass ]})
 
 export class ModifyComponent implements OnInit {
 

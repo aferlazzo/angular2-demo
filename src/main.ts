@@ -1,17 +1,7 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
-import { enableProdMode } from '@angular/core';
-import { provide }        from '@angular/core';
-import { ROUTER_PROVIDERS } from '@angular/router';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { HTTP_PROVIDERS } from '@angular/http';
-import { Angular2DemoAppComponent, environment } from './app/';
+import { Angular2DemoAppComponent } from './app/angular2-demo.component';
+import { APP_ROUTER_PROVIDERS } from './app/app.routes';
+import {HTTP_PROVIDERS} from '@angular/http';
 
-if (environment.production) {
-  enableProdMode();
-}
-
-bootstrap(Angular2DemoAppComponent, [
-  ROUTER_PROVIDERS,
-  provide(LocationStrategy, {useClass:HashLocationStrategy}),
-  HTTP_PROVIDERS
-]);
+bootstrap(Angular2DemoAppComponent, [ APP_ROUTER_PROVIDERS ])
+    .catch(err => console.error(err));

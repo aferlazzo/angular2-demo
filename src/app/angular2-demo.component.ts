@@ -1,31 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, Routes , ROUTER_DIRECTIVES, ROUTER_PROVIDERS}from '@angular/router';
-import { AboutComponent } from './+about';
-import { ListComponent } from './+list';
-import { ModifyComponent } from './+modify';
-import { AddComponent } from './+add';
-import { DeleteComponent } from './+delete';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+import {HTTP_PROVIDERS} from '@angular/http';
+import { AboutComponent } from './+about/about.component';
+import { ListComponent } from './+list/list.component';
+import { ModifyComponent } from './+modify/modify.component';
+import { AddComponent } from './+add/add.component';
+import { DeleteComponent } from './+delete/delete.component';
 import { Driver } from './shared/driver';
 import { DriverService } from './shared/driver.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'angular2-demo-app',
+  selector: 'app-root',
   templateUrl: 'angular2-demo.component.html',
   styleUrls: ['angular2-demo.component.css'],
-  directives: [ROUTER_DIRECTIVES, ListComponent, AddComponent, ModifyComponent, DeleteComponent],
-  providers: [ROUTER_PROVIDERS, DriverService]
+  directives: [ ROUTER_DIRECTIVES ],
+  providers: [ DriverService, HTTP_PROVIDERS ]
 })
-@Routes([
-  {path: 'list', component: ListComponent},
-  {path: 'modify', component: ModifyComponent},
-  {path: 'add', component: AddComponent},
-  {path: 'delete', component: DeleteComponent},
-  {path: 'about', component: AboutComponent}
-])
 export class Angular2DemoAppComponent implements OnInit{
-  constructor( private driverService: DriverService,
-               private router:Router) {}
+  constructor( private driverService: DriverService) {}
 
   drivers:Driver[];
   subcomponent_name: string;
@@ -46,9 +39,11 @@ export class Angular2DemoAppComponent implements OnInit{
           this.drivers.length + ' driver records being returned');
     }
 
+    /*
     //jump to the list view by default (since there is no default route defined)
     this.router.navigate(['/list']);
     this.driverService.active_menu = "List";
+    */
   }
 
 

@@ -4,6 +4,6 @@ export class Angular2DemoPage {
   }
 
   getParagraphText() {
-    return element(by.css('angular2-demo-app h1')).getText();
+    return element(by.css('app-root h1')).getText();
   }
 }

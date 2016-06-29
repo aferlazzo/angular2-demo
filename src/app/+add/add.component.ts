@@ -1,13 +1,5 @@
 import { Component, OnInit }  from '@angular/core';
-import {
-    FormBuilder,
-    Validators,
-    Control,
-    ControlGroup,
-    FORM_DIRECTIVES
-} from '@angular/common';
-import { DrivernameValidator } from '../shared/drivernameValidator';
-import { Router }             from '@angular/router';
+import { Router } from '@angular/router';
 import { Driver }             from '../shared/driver';
 import { DriverService }      from '../shared/driver.service';
 import { SelectService }      from '../shared/select.service';
@@ -18,7 +10,7 @@ import { SelectService }      from '../shared/select.service';
   templateUrl: 'add.component.html',
   styleUrls: ['add.component.css'],
   providers: [ SelectService, Driver ],
-  directives: [ FORM_DIRECTIVES ]
+  directives: [  ]
 })
 
 export class AddComponent implements OnInit {
@@ -37,6 +29,22 @@ export class AddComponent implements OnInit {
     success: '',
     error: ''
   };
+  /*
+  driverForm = new FormGroup ({
+    drivername: new FormControl(),
+    firstname: new FormControl(),
+    lastname: new FormControl(),
+    password: new FormControl(),
+    ability: new FormControl(),
+    email: new FormControl(),
+    address: new FormControl(),
+    city: new FormControl(),
+    state: new FormControl(),
+    zip: new FormControl(),
+    phone:new FormControl()
+  })
+  */
+
 
   // for dropdown lists
   driving_ability_list = ['Bicycle', 'Scooter', 'Motorcycle', 'Car (stick)', 'Car (automatic)', 'Truck'];
@@ -89,7 +97,7 @@ export class AddComponent implements OnInit {
   </div>
 
   */
-  
+
 
 
 
