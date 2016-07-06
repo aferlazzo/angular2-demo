@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
   drivers = this.driverService.driverArray;
 
   ngOnInit() {
-    console.info('list.component.ts initialized, emitted custom event for List view');
+    console.info('list.component.ts initialized');
   }
 
   errorMessage = "";

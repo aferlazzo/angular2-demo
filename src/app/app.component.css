@@ -1,0 +1,55 @@
+.menu_name {
+	margin: 1em 0.2em 0em 1.2em;
+	display: block;
+	position: relative;
+	width: 5.3em;
+	text-align: center;
+	color: #fff;
+}
+h1 {
+	height:5rem;
+	font-size: 3em;
+	background-color: #6c7a95;
+	margin: 0;
+	font-family: "open sans", sans-serif;
+	color: #fff;
+	padding: .25em;
+	text-align: center;
+}
+nav.navbar.navbar-default {
+	background-color: #FE8300;
+	padding-top: 0.3rem;
+	border-radius: 0;
+	border-width: 0;
+}
+.nav.navbar-nav {
+	margin-bottom: 0;
+}
+.nav.navbar-nav .active .router-link-active {
+	font-weight: bold;
+}
+.fa.fa-list-ul {
+	background-color: #24286a;
+	border: 3px solid #eee;
+	padding-left: 0.6em;
+}
+.fa.fa-plus {
+	background-color: #54ce47;
+	border: 3px solid #eee;
+	padding-left: 0.6em;
+}
+.fa.fa-exchange {
+	background-color: #983055;
+	border: 3px solid #eee;
+	padding-left: 0.6em;
+}
+.fa.fa-minus {
+	background-color: #803286;
+	border: 3px solid #eee;
+	padding-left: 0.6em;
+}
+.fa.fa-info{
+	background-color: #d93f96;
+	border: 3px solid #eee;
+	padding-left: 0.6em;
+}
