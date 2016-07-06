@@ -4,10 +4,10 @@
 
 /* global require, module */
 
-var Angular2App = require('angular-cli/lib/broccoli/angular2-app');
+var App = require('angular-cli/lib/broccoli/app');
 
 module.exports = function(defaults) {
-  return new Angular2App(defaults, {
+  return new App(defaults, {
     vendorNpmFiles: [
       'systemjs/dist/system-polyfills.js',
       'systemjs/dist/system.src.js',

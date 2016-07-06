@@ -1,8 +1,10 @@
 import { Component, OnInit }  from '@angular/core';
 import { Router } from '@angular/router';
+import {Http, Response, Headers}   from '@angular/http';
 import { Driver }             from '../shared/driver';
 import { DriverService }      from '../shared/driver.service';
 import { SelectService }      from '../shared/select.service';
+import { EqualValidator }     from './equal-validator.directive';
 
 @Component({
   moduleId: module.id,
@@ -10,7 +12,7 @@ import { SelectService }      from '../shared/select.service';
   templateUrl: 'add.component.html',
   styleUrls: ['add.component.css'],
   providers: [ SelectService, Driver ],
-  directives: [  ]
+  directives: [EqualValidator]
 })
 
 export class AddComponent implements OnInit {
