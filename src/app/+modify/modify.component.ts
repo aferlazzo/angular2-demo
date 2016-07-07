@@ -1,21 +1,26 @@
 import { Component, OnInit }  from '@angular/core';
+import { HTTP_PROVIDERS }     from '@angular/http';
 import { Router }             from '@angular/router';
 import { NgClass }            from '@angular/common';
 import { Driver }             from '../shared/driver';
 import { DriverService }      from '../shared/driver.service';
 import { SelectService }      from '../shared/select.service';
+import { AuthService }        from '../auth.service';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+
 @Component({
   moduleId: module.id,
   selector: 'app-modify',
   templateUrl: 'modify.component.html',
   styleUrls: ['modify.component.css'],
-  providers:  [ SelectService, Driver ],
-  directives: [ NgClass ]})
+  providers:  [ SelectService, Driver, DriverService, HTTP_PROVIDERS ],
+  directives: [ NgClass, ROUTER_DIRECTIVES ]})
 
 export class ModifyComponent implements OnInit {
 
   constructor(
-      private driverService: DriverService,
+      public authService: AuthService,
+      public driverService: DriverService,
       private router: Router
   ) {  }
 
@@ -52,6 +57,9 @@ export class ModifyComponent implements OnInit {
   selected_index:number;
 
   ngOnInit (){
+    this.driverService.fillDriverArray();
+    var myDrivers = this.driverService.driverArray;
+    console.log("(in modify.component.ts) driverArray has " + myDrivers.length + ' drivers');
     // find selected rows
     this.selected_index = this.driverService.find_row_to_modify();
 
@@ -71,13 +79,17 @@ export class ModifyComponent implements OnInit {
       this.driver.state       = this.driverService.driverArray[i].state;
       this.driver.zip         = this.driverService.driverArray[i].zip;
       this.driver.phone       = this.driverService.driverArray[i].phone;
+    } else {
+      // go back to list view
+      this.driverService.active_menu = "List";
+      this.router.navigate(['/list']);
     }
   }
 
   cancel_modify() {
     // go back to list view
-    this.router.navigate(['/list']);
     this.driverService.active_menu = "List";
+    this.router.navigate(['/list']);
   }
 
   /*
@@ -90,8 +102,8 @@ export class ModifyComponent implements OnInit {
           this.message.success = 'Driver ' + this.driver.drivername + ' updated';
 
           // go back to list view
-          this.router.navigate(['/list']);
           this.driverService.active_menu = "List";
+          this.router.navigate(['/list']);
         },
         error => {
           if (error.status == '404') {

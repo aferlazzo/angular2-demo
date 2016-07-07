@@ -10,13 +10,13 @@ import {TimerWrapper}         from '@angular/core/src/facade/async';
   selector: 'app-delete',
   templateUrl: 'delete.component.html',
   styleUrls: ['delete.component.css'],
-  providers: [ HTTP_PROVIDERS,  Driver ]
+  providers: [ HTTP_PROVIDERS,  Driver, DriverService ]
 })
 
 export class DeleteComponent implements OnInit {
 
-  constructor(private driverService:DriverService,
-              private router:Router) {
+  constructor(public driverService: DriverService,
+              private router: Router) {
   }
 
   private message = {
@@ -37,23 +37,26 @@ export class DeleteComponent implements OnInit {
     // find first selected row
     this.first_selected_row_index = this.driverService.find_first_row_to_delete();
 
-    console.debug('inside delete.component.ts initializing, first_selected_row_index: '
-        + this.first_selected_row_index);
-    this.milliseconds_to_delay = 4000;
-    console.debug("delay " + this.milliseconds_to_delay + " before a driver delete");
+    if (this.first_selected_row_index == -1) {
+      console.debug('inside delete.component.ts initializing, first_selected_row_index: '
+          + this.first_selected_row_index);
+      this.milliseconds_to_delay = 4000;
+      console.debug("delay " + this.milliseconds_to_delay + " before a driver delete");
 
-    console.debug('first_selected_index: ' + this.first_selected_row_index);
-    if (this.first_selected_row_index > -1) {
-      //at least one driver row is selected
-      this.message.success = 'Deleted driver';
+      console.debug('first_selected_index: ' + this.first_selected_row_index);
+    } else {
+      if (this.first_selected_row_index > -1) {
+        //at least one driver row is selected
+        this.message.success = 'Deleted driver';
 
-      console.debug('found a selected row at index ' + this.first_selected_row_index);
+        console.debug('found a selected row at index ' + this.first_selected_row_index);
 
-      // timerId gives user 4 seconds to reconsider deleting a driver.
-      // If user does not press the 'Undo' button, delete_one_driver_from_database() will be run.
-      this.timerId = TimerWrapper.setTimeout(() => {
-        this.delete_one_driver_from_database(this.first_selected_row_index)
-      }, this.milliseconds_to_delay);
+        // timerId gives user 4 seconds to reconsider deleting a driver.
+        // If user does not press the 'Undo' button, delete_one_driver_from_database() will be run.
+        this.timerId = TimerWrapper.setTimeout(() => {
+          this.delete_one_driver_from_database(this.first_selected_row_index)
+        }, this.milliseconds_to_delay);
+      }
     }
   }
 
@@ -94,8 +97,8 @@ export class DeleteComponent implements OnInit {
               }
 
               // go to list view
-              this.router.navigate(['/list']);
               this.driverService.active_menu = "List";
+              this.router.navigate(['/list']);
             },
             error => {
               if (error.status == '404') {
@@ -104,8 +107,8 @@ export class DeleteComponent implements OnInit {
                 this.message.error = 'Unknown error';
               }
 
-              this.router.navigate(['/list']);
               this.driverService.active_menu = "List";
+              this.router.navigate(['/list']);
             }
         );
   }
@@ -116,8 +119,8 @@ export class DeleteComponent implements OnInit {
       this.timerId = null;
     }
     // go to list view
-    this.router.navigate(['/list']);
     this.driverService.active_menu = "List";
+    this.router.navigate(['/list']);
   }
 
 }

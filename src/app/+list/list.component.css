@@ -56,6 +56,7 @@ td:hover {
 .container-fluid .panel-body table.flex-table thead th {
 	border-bottom-width: 1px;
 	color: #24286a;
+	cursor: pointer;
 }
 .container-fluid .panel-body table.flex-table tbody {
 	flex: 1;
@@ -122,3 +123,7 @@ td:hover {
 .container-fluid .panel-body table.flex-widths tr th:nth-child(8) {
 	flex: 0.5;
 }
+
+/* headings */
+
+.hidden { display:none; }

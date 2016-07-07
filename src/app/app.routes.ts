@@ -1,9 +1,12 @@
 import { provideRouter, RouterConfig } from '@angular/router';
-import { ListComponent } from './+list/list.component';
+import { ListComponent }   from './+list/list.component';
 import { ModifyComponent } from './+modify/modify.component';
-import { AddComponent } from './+add/add.component';
+import { AddComponent }    from './+add/add.component';
 import { DeleteComponent } from './+delete/delete.component';
-import { AboutComponent } from './+about/about.component';
+import { AboutComponent }  from './+about/about.component';
+import { AuthGuard }       from './auth.guard';
+import { AuthService }     from './auth.service';
+//import { CanDeactivateGuard }    from './interfaces';
 
 export const routes: RouterConfig = [
   {
@@ -12,7 +15,8 @@ export const routes: RouterConfig = [
   },
   {
     path: 'modify',
-    component: ModifyComponent
+    component: ModifyComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'add',
@@ -20,7 +24,8 @@ export const routes: RouterConfig = [
   },
   {
     path: 'delete',
-    component: DeleteComponent
+    component: DeleteComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'about',
@@ -33,6 +38,10 @@ export const routes: RouterConfig = [
   },
 ];
 
+export const AUTH_PROVIDERS = [AuthGuard, AuthService];
+
 export const APP_ROUTER_PROVIDERS = [
-  provideRouter(routes)
+  provideRouter(routes),
+  AUTH_PROVIDERS,
+  AuthGuard
 ];

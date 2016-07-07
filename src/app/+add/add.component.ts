@@ -124,8 +124,8 @@ export class AddComponent implements OnInit {
 
   cancel_add() {
     // go back to list view
-    this.router.navigate(['/list']);
     this.driverService.active_menu = "List";
+    this.router.navigate(['/list']);
   }
 
   /*
@@ -145,8 +145,8 @@ export class AddComponent implements OnInit {
               this.driverService.add_driver_to_driverArray(this.current_driver);
 
               // go back to list view
-              this.router.navigate(['/list']);
               this.driverService.active_menu = "List";
+              this.router.navigate(['/list']);
             },
             error => {
               if (error.status == '403') {

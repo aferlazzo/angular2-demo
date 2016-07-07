@@ -1,4 +1,4 @@
-import {Injectable}                from '@angular/core';
+import {Injectable, OnInit}                from '@angular/core';
 import {Http, Response, Headers}   from '@angular/http';
 import {Observable}                from 'rxjs/Observable';
 import {RequestOptions}            from '@angular/http';
@@ -48,8 +48,8 @@ import { MOCK_DRIVERS }            from './mock-drivers';
 
 @Injectable()
 export class DriverService {
-  constructor(private http:Http) {
-  }
+
+  constructor(private http:Http) {  }
 
   /*
 
@@ -59,7 +59,7 @@ export class DriverService {
    it.
 
    */
-  driverArray:Driver[];
+  public driverArray:Driver[];
 
   // set the initial value to pass to app.component.change_active_menu() from
   // list.component.ts, add.component.ts, modify.component.ts, and delete.component.ts
@@ -72,14 +72,19 @@ export class DriverService {
   saved_drivername = "";
   last_row_selected = -1;
 
+  ngOninit() {
+    this.fillDriverArray();
+  }
+
+
   fillDriverArray():void {
     console.info('driver.service.ts in fillDriverArray()');
 
     /******************* uncomment block for mock data *****************************
      /*/
-     this.driverArray = MOCK_DRIVERS;
 
-     if (this.driverArray) {
+    if (!this.driverArray) {
+      this.driverArray = MOCK_DRIVERS;
       console.info('driver.service.ts in fillDriverArray() There are ' +
           this.driverArray.length + ' driver records in driverArray');
     }
@@ -214,14 +219,20 @@ export class DriverService {
    */
 
   find_first_row_to_delete():number {
-    var len = this.driverArray.length;
-    var index = -1;
+    var index;
 
-    for (let i = 0; i < len; i++) {
-      if (this.driverArray[i].selected == true) {
-        index = i;
-        break;
+    if (this.driverArray) {
+      var len = this.driverArray.length;
+      index = -1;
+
+      for (let i = 0; i < len; i++) {
+        if (this.driverArray[i].selected == true) {
+          index = i;
+          break;
+        }
       }
+    } else {
+      index = -1;
     }
 
     return index;

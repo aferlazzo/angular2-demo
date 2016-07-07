@@ -7,9 +7,36 @@
           <table class="flex-table table table-striped table-hover flex-widths flex-table-aligned">
             <thead>
             <tr>
-              <th>Driver</th><th>First Name</th><th>Last Name</th>
-              <th>Driving Ability</th><th>Email</th><th>Address</th>
-              <th>City</th><th>State</th><th>Zip</th><th>Phone</th>
+              <th (click)="sortByDriverName()">Driver
+                <span [ngClass]="{hidden:drivername_up_arrow_hidden}">&#9650;</span>
+                <span [ngClass]="{hidden:drivername_down_arrow_hidden}">&#9660;</span></th>
+              <th (click)="sortByFirstName()">First Name
+                <span [ngClass]="{hidden:firstname_up_arrow_hidden}">&#9650;</span>
+                <span [ngClass]="{hidden:firstname_down_arrow_hidden}">&#9660;</span></th>
+              <th (click)="sortByLastName()">Last Name
+                <span [ngClass]="{hidden:lastname_up_arrow_hidden}">&#9650;</span>
+                <span [ngClass]="{hidden:lastname_down_arrow_hidden}">&#9660;</span></th>
+              <th (click)="sortByAbility()">Driving Ability
+                <span [ngClass]="{hidden:ability_up_arrow_hidden}">&#9650;</span>
+                <span [ngClass]="{hidden:ability_down_arrow_hidden}">&#9660;</span></th>
+              <th (click)="sortByEmail()">Email
+                <span [ngClass]="{hidden:email_up_arrow_hidden}">&#9650;</span>
+                <span [ngClass]="{hidden:email_down_arrow_hidden}">&#9660;</span></th>
+              <th (click)="sortByAddress()">Address
+                <span [ngClass]="{hidden:address_up_arrow_hidden}">&#9650;</span>
+                <span [ngClass]="{hidden:address_down_arrow_hidden}">&#9660;</span></th>
+              <th (click)="sortByCity()">City
+                <span [ngClass]="{hidden:city_up_arrow_hidden}">&#9650;</span>
+                <span [ngClass]="{hidden:city_down_arrow_hidden}">&#9660;</span></th>
+              <th (click)="sortByState()">State
+                <span [ngClass]="{hidden:state_up_arrow_hidden}">&#9650;</span>
+                <span [ngClass]="{hidden:state_down_arrow_hidden}">&#9660;</span></th>
+              <th (click)="sortByZip()">Zip
+                <span [ngClass]="{hidden:zip_up_arrow_hidden}">&#9650;</span>
+                <span [ngClass]="{hidden:zip_down_arrow_hidden}">&#9660;</span></th>
+              <th (click)="sortByPhone()">Phone
+                <span [ngClass]="{hidden:phone_up_arrow_hidden}">&#9650;</span>
+                <span [ngClass]="{hidden:phone_down_arrow_hidden}">&#9660;</span></th>
             </tr>
             </thead>
             <tbody class="scroll">

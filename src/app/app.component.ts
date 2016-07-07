@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import {HTTP_PROVIDERS} from '@angular/http';
-import { REACTIVE_FORM_DIRECTIVES, FormBuilder,
-    FormGroup, Validators} from '@angular/forms';
 import { NgForm }    from '@angular/common';
 import { Driver } from './shared/driver';
 import { DriverService } from './shared/driver.service';
@@ -13,8 +11,8 @@ import { DriverService } from './shared/driver.service';
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-  directives: [ ROUTER_DIRECTIVES, REACTIVE_FORM_DIRECTIVES ],
-  providers: [ DriverService, HTTP_PROVIDERS, FormBuilder]
+  directives: [ ROUTER_DIRECTIVES ],
+  providers: [ DriverService, HTTP_PROVIDERS ]
 })
 export class AppComponent implements OnInit{
 
@@ -46,7 +44,7 @@ export class AppComponent implements OnInit{
     var msg = `change_active_menu(`+ next_active_menu + `)`;
     var zzz = this.driverService.driverArray.length;
 
-    console.log(`${msg} I now have ${zzz} drivers`);
+    console.log(`${msg} I now have ${zzz} drivers and am activing the ${next_active_menu} menu`);
 
     this.driverService.active_menu = next_active_menu;
   }

@@ -14,27 +14,32 @@
 				the 'active_menu' variable equals 'List -->
         <li [class.active]="driverService.active_menu=='List'">
           <a [routerLink]="['/list']"
-             (click)='change_active_menu("List")'><span class="fa fa-list-ul"></span>
+             (click)='change_active_menu("List")'>
+            <span class="fa fa-list-ul"></span>
             <span class="menu_name">List</span></a>
         </li>
         <li [class.active]="driverService.active_menu=='Add'">
           <a [routerLink]="['/add']"
-             (click)='change_active_menu("Add")'><span class="fa fa-plus"></span>
+             (click)='change_active_menu("Add")'>
+            <span class="fa fa-plus"></span>
             <span class="menu_name">Add</span></a>
         </li>
         <li [class.active]="driverService.active_menu=='Modify'">
           <a [routerLink]="['/modify']"
-             (click)='change_active_menu("Modify")'><span class="fa fa-exchange"></span>
+             (click)='change_active_menu("Modify")'>
+            <span class="fa fa-exchange"></span>
             <span class="menu_name">Modify</span></a>
         </li>
         <li [class.active]="driverService.active_menu=='Delete'">
           <a [routerLink]="['/delete']"
-             (click)='change_active_menu("Delete")'><span class="fa fa-minus"></span>
+             (click)='change_active_menu("Delete")'>
+            <span class="fa fa-minus"></span>
             <span class="menu_name">Delete</span></a>
         </li>
         <li [class.active]="driverService.active_menu=='About'">
           <a [routerLink]="['/about']"
-             (click)='change_active_menu("About")'><span class="fa fa-info"></span>
+             (click)='change_active_menu("About")'>
+            <span class="fa fa-info"></span>
             <span class="menu_name">About</span></a>
         </li>
       </ul>

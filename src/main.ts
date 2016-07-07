@@ -2,6 +2,16 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import { AppComponent } from './app/app.component';
 import { environment } from './app';
 import { APP_ROUTER_PROVIDERS } from './app/app.routes';
+import { DriverService }      from './app/shared/driver.service';
+import { HTTP_PROVIDERS }     from '@angular/http';
 
-bootstrap(AppComponent, [ APP_ROUTER_PROVIDERS ])
+// Add these symbols to override the `LocationStrategy`
+import { LocationStrategy,
+    HashLocationStrategy } from '@angular/common';
+
+bootstrap(AppComponent, [
+  APP_ROUTER_PROVIDERS,
+  { provide: LocationStrategy, useClass: HashLocationStrategy },
+    DriverService, HTTP_PROVIDERS
+])
     .catch(err => console.error(err));
