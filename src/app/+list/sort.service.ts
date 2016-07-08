@@ -1,15 +1,17 @@
 import {Injectable}                from '@angular/core';
 import { Driver }  from '../shared/driver';
 import { DriverService }  from '../shared/driver.service';
-
+import { AuthService } from '../auth.service';
 @Injectable()
 export class SortService {
   the_result:[{ drivername:string, value:number }];
 
 
-  constructor(public driverService: DriverService) { }
+  constructor(
+      public authService: AuthService,
+      public driverService: DriverService) { }
 
-  drivers = this.driverService.driverArray;
+  drivers = this.authService.driverArray;
 
 
   /*

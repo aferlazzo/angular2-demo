@@ -60,7 +60,7 @@ export class DriverService {
    it.
 
    */
-  public driverArray:Driver[];
+  //public driverArray:Driver[];
 
   // set the initial value to pass to app.component.change_active_menu() from
   // list.component.ts, add.component.ts, modify.component.ts, and delete.component.ts
@@ -83,11 +83,11 @@ export class DriverService {
 
     /******************* uncomment block for mock data *****************************
      /*/
-     this.driverArray = MOCK_DRIVERS;
+     this.authService.driverArray = MOCK_DRIVERS;
 
-     if (this.driverArray) {
+     if (this.authService.driverArray) {
       console.info('driver.service.ts in fillDriverArray() There are ' +
-          this.driverArray.length + ' driver records in driverArray');
+          this.authService.driverArray.length + ' driver records in driverArray');
     }
      /*/
 
@@ -151,11 +151,11 @@ export class DriverService {
     this.getDriverListFromDatabase()
         .subscribe(
             drivers => {
-              this.driverArray = drivers;
+              this.authService.driverArray = drivers;
 
               console.info('driver.service.ts in fillDriverArray() There are ' +
-                  this.driverArray.length + ' driver records in driverArray');
-              return this.driverArray;
+                  this.authService.driverArray.length + ' driver records in driverArray');
+              return this.authService.driverArray;
             },
             error => {
               this.errorMessage = <any>error;
@@ -171,7 +171,7 @@ export class DriverService {
    */
 
   add_driver_to_driverArray(new_driver:Driver) {
-    this.driverArray.push({
+    this.authService.driverArray.push({
       "selected": new_driver.selected,
       "drivername": new_driver.drivername,
       "password": new_driver.password,
@@ -192,7 +192,7 @@ export class DriverService {
 
   /*
 
-   delete_selected_driver_from_driverArray(index) Looks at the existing driverService.driverArray and removes
+   delete_selected_driver_from_driverArray(index) Looks at the existing this.authService.driverArray and removes
    array member that is selected == true.
 
    */
@@ -200,13 +200,13 @@ export class DriverService {
   delete_selected_driver_from_driverArray(index:number):string {
     var selected_drivername = '';
 
-    if (this.driverArray[index].selected == true) {
-      selected_drivername = this.driverArray[index].drivername;
+    if (this.authService.driverArray[index].selected == true) {
+      selected_drivername = this.authService.driverArray[index].drivername;
       console.log("delete_selected_driver_from_driverArray() found selected row: the driver '" +
           selected_drivername + "' at index " + index);
 
       // use splice to remove the entry from the driver_array
-      this.driverArray.splice( index, 1 );
+      this.authService.driverArray.splice( index, 1 );
     }
     return selected_drivername;
   }
@@ -221,12 +221,12 @@ export class DriverService {
 
   find_first_row_to_delete():number {
 
-    if (this.driverArray) {
-      var len = this.driverArray.length;
+    if (this.authService.driverArray) {
+      var len = this.authService.driverArray.length;
       this.authService.last_row_selected = -1;
 
       for (let i = 0; i < len; i++) {
-        if (this.driverArray[i].selected == true) {
+        if (this.authService.driverArray[i].selected == true) {
           this.authService.last_row_selected = i;
           break;
         }
@@ -247,12 +247,12 @@ export class DriverService {
    */
 
   find_row_to_modify():number {
-    if (this.driverArray) {
-      var len = this.driverArray.length;
+    if (this.authService.driverArray) {
+      var len = this.authService.driverArray.length;
       var selectedCount = 0;
 
       for (let i = 0; i < len; i++) {
-        if (this.driverArray[i].selected == true) {
+        if (this.authService.driverArray[i].selected == true) {
           this.authService.last_row_selected = i;
           selectedCount++;
         }
@@ -263,7 +263,7 @@ export class DriverService {
       }
       return this.authService.last_row_selected;
     } else {
-      //alert("auth.guard.ts > auth.service.ts > driver.service.ts: this.driverArray is undefined");
+      //alert("auth.guard.ts > auth.service.ts > driver.service.ts: this.authService.driverArray is undefined");
     }
   }
 
@@ -339,7 +339,7 @@ export class DriverService {
 
   /*
 
-   delete_selected_driver_from_database(drivername) Looks at the existing driverService.driverArray
+   delete_selected_driver_from_database(drivername) Looks at the existing this.authService.driverArray
    and removes matching drivers that are selected.
 
    */
@@ -367,7 +367,7 @@ export class DriverService {
 
   /*
 
-   modify_selected_driver_in_database() Looks at the existing driverService.driverArray
+   modify_selected_driver_in_database() Looks at the existing this.authService.driverArray
    and modifies the matching driver that are selected.
 
    */
@@ -420,31 +420,31 @@ export class DriverService {
 
   /*
 
-   modify_selected_driver_in_driverArray(driver) Looks at the existing driverService.driverArray and update
+   modify_selected_driver_in_driverArray(driver) Looks at the existing this.authService.driverArray and update
    the array member that is selected.
 
    */
 
   modify_selected_driver_in_driverArray(driver:Driver) {
-    for (let i = 0; i < this.driverArray.length; i++) {
-      if (this.driverArray[i].selected == true) {
+    for (let i = 0; i < this.authService.driverArray.length; i++) {
+      if (this.authService.driverArray[i].selected == true) {
         console.log("modify_selected_driver_in_driverArray[" + i + "] updating selected row with drivername '" +
             driver.drivername + "'");
 
         this.authService.last_row_selected = i;
 
-        this.driverArray[i].selected    = driver.selected;
-        this.driverArray[i].drivername  = driver.drivername;
-        this.driverArray[i].password    = driver.password;
-        this.driverArray[i].ability     = driver.ability;
-        this.driverArray[i].firstname   = driver.firstname;
-        this.driverArray[i].lastname    = driver.lastname;
-        this.driverArray[i].email       = driver.email;
-        this.driverArray[i].address     = driver.address;
-        this.driverArray[i].city        = driver.city;
-        this.driverArray[i].state       = driver.state;
-        this.driverArray[i].zip         = driver.zip;
-        this.driverArray[i].phone       = driver.phone;
+        this.authService.driverArray[i].selected    = driver.selected;
+        this.authService.driverArray[i].drivername  = driver.drivername;
+        this.authService.driverArray[i].password    = driver.password;
+        this.authService.driverArray[i].ability     = driver.ability;
+        this.authService.driverArray[i].firstname   = driver.firstname;
+        this.authService.driverArray[i].lastname    = driver.lastname;
+        this.authService.driverArray[i].email       = driver.email;
+        this.authService.driverArray[i].address     = driver.address;
+        this.authService.driverArray[i].city        = driver.city;
+        this.authService.driverArray[i].state       = driver.state;
+        this.authService.driverArray[i].zip         = driver.zip;
+        this.authService.driverArray[i].phone       = driver.phone;
       }
     }
   }

@@ -57,36 +57,23 @@ export class ModifyComponent implements OnInit {
   selected_index:number;
 
   ngOnInit (){
-    if (this.driverService.driverArray) {
-      this.driverService.fillDriverArray();
+    let i  = this.authService.last_row_selected;
 
-      // find selected rows
-      this.selected_index = this.authService.last_row_selected;
+    console.log("(in modify.component.ts) driverArray has " + this.authService.driverArray.length + ' drivers');
 
-      console.log("(in modify.component.ts) driverArray has " + this.driverService.driverArray.length + ' drivers');
-
-      if (this.selected_index > -1) {
-        // populate this modify page form field model with existing driverArray data
-        let i = this.selected_index;
-        this.driver.selected = this.driverService.driverArray[i].selected;
-        this.driver.drivername = this.driverService.driverArray[i].drivername;
-        this.driver.password = this.driverService.driverArray[i].password;
-        this.driver.ability = this.driverService.driverArray[i].ability;
-        this.driver.firstname = this.driverService.driverArray[i].firstname;
-        this.driver.lastname = this.driverService.driverArray[i].lastname;
-        this.driver.email = this.driverService.driverArray[i].email;
-        this.driver.address = this.driverService.driverArray[i].address;
-        this.driver.city = this.driverService.driverArray[i].city;
-        this.driver.state = this.driverService.driverArray[i].state;
-        this.driver.zip = this.driverService.driverArray[i].zip;
-        this.driver.phone = this.driverService.driverArray[i].phone;
-      } else {
-        //
-        // no row selected, go back to list view
-        this.driverService.active_menu = "List";
-        this.router.navigate(['/list']);
-      }
-    }
+    // populate this modify page form field model with existing driverArray data
+    this.driver.selected = this.authService.driverArray[i].selected;
+    this.driver.drivername = this.authService.driverArray[i].drivername;
+    this.driver.password = this.authService.driverArray[i].password;
+    this.driver.ability = this.authService.driverArray[i].ability;
+    this.driver.firstname = this.authService.driverArray[i].firstname;
+    this.driver.lastname = this.authService.driverArray[i].lastname;
+    this.driver.email = this.authService.driverArray[i].email;
+    this.driver.address = this.authService.driverArray[i].address;
+    this.driver.city = this.authService.driverArray[i].city;
+    this.driver.state = this.authService.driverArray[i].state;
+    this.driver.zip = this.authService.driverArray[i].zip;
+    this.driver.phone = this.authService.driverArray[i].phone;
   }
 
   cancel_modify() {

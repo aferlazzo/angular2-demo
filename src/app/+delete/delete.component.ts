@@ -4,6 +4,7 @@ import { Router }             from '@angular/router';
 import { Driver }             from '../shared/driver';
 import { DriverService }      from '../shared/driver.service';
 import {TimerWrapper}         from '@angular/core/src/facade/async';
+import { AuthService }        from '../auth.service';
 
 @Component({
   moduleId: module.id,
@@ -15,8 +16,10 @@ import {TimerWrapper}         from '@angular/core/src/facade/async';
 
 export class DeleteComponent implements OnInit {
 
-  constructor(public driverService: DriverService,
-              private router: Router) {
+  constructor(
+      public authService: AuthService,
+      public driverService: DriverService,
+      private router: Router) {
   }
 
   private message = {
@@ -37,26 +40,24 @@ export class DeleteComponent implements OnInit {
     // find first selected row
     this.first_selected_row_index = this.driverService.find_first_row_to_delete();
 
-    if (this.first_selected_row_index == -1) {
+    if (this.first_selected_row_index > -1) {
       console.debug('inside delete.component.ts initializing, first_selected_row_index: '
           + this.first_selected_row_index);
       this.milliseconds_to_delay = 4000;
       console.debug("delay " + this.milliseconds_to_delay + " before a driver delete");
 
       console.debug('first_selected_index: ' + this.first_selected_row_index);
-    } else {
-      if (this.first_selected_row_index > -1) {
-        //at least one driver row is selected
-        this.message.success = 'Deleted driver';
+      //at least one driver row is selected
+      this.message.success = 'Deleted driver ' +
+          this.authService.driverArray[this.first_selected_row_index].drivername;
 
-        console.debug('found a selected row at index ' + this.first_selected_row_index);
+      console.debug('found a selected row at index ' + this.first_selected_row_index);
 
-        // timerId gives user 4 seconds to reconsider deleting a driver.
-        // If user does not press the 'Undo' button, delete_one_driver_from_database() will be run.
-        this.timerId = TimerWrapper.setTimeout(() => {
-          this.delete_one_driver_from_database(this.first_selected_row_index)
-        }, this.milliseconds_to_delay);
-      }
+      // timerId gives user 4 seconds to reconsider deleting a driver.
+      // If user does not press the 'Undo' button, delete_one_driver_from_database() will be run.
+      this.timerId = TimerWrapper.setTimeout(() => {
+        this.delete_one_driver_from_database(this.first_selected_row_index)
+      }, this.milliseconds_to_delay);
     }
   }
 

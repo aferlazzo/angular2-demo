@@ -42,43 +42,43 @@
             <tbody class="scroll">
             <tr *ngFor="let driver of drivers; let i=index">
               <td [ngClass]="{selected_background:drivers[i].selected}"
-                  (click)="clicked_row = i;row_selected(i)">
+                  (click)="toggle_row_selection(i)">
                 {{driver.drivername}}
               </td>
               <td [ngClass]="{selected_background:drivers[i].selected}"
-                  (click)="clicked_row = i;row_selected(i)">
+                  (click)="toggle_row_selection(i)">
                 {{driver.firstname}}
               </td>
               <td [ngClass]="{selected_background:drivers[i].selected}"
-                  (click)="clicked_row = i;row_selected(i)">
+                  (click)="toggle_row_selection(i)">
                 {{driver.lastname}}
               </td>
               <td [ngClass]="{selected_background:drivers[i].selected}"
-                  (click)="clicked_row = i;row_selected(i)">
+                  (click)="toggle_row_selection(i)">
                 {{driver.ability}}
               </td>
               <td [ngClass]="{selected_background:drivers[i].selected}"
-                  (click)="clicked_row = i;row_selected(i)">
+                  (click)="toggle_row_selection(i)">
                 {{driver.email}}
               </td>
               <td [ngClass]="{selected_background:drivers[i].selected}"
-                  (click)="clicked_row = i;row_selected(i)">
+                  (click)="toggle_row_selection(i)">
                 {{driver.address}}
               </td>
               <td [ngClass]="{selected_background:drivers[i].selected}"
-                  (click)="clicked_row = i;row_selected(i)">
+                  (click)="toggle_row_selection(i)">
                 {{driver.city}}
               </td>
               <td [ngClass]="{selected_background:drivers[i].selected}"
-                  (click)="clicked_row = i;row_selected(i)">
+                  (click)="toggle_row_selection(i)">
                 {{driver.state}}
               </td>
               <td [ngClass]="{selected_background:drivers[i].selected}"
-                  (click)="clicked_row = i;row_selected(i)">
+                  (click)="toggle_row_selection(i)">
                 {{driver.zip}}
               </td>
               <td [ngClass]="{selected_background:drivers[i].selected}"
-                  (click)="clicked_row = i;row_selected(i)">
+                  (click)="toggle_row_selection(i)">
                 {{driver.phone}}
               </td>
             </tr>

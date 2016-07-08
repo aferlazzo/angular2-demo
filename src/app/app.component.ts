@@ -4,6 +4,7 @@ import {HTTP_PROVIDERS} from '@angular/http';
 import { NgForm }    from '@angular/common';
 import { Driver } from './shared/driver';
 import { DriverService } from './shared/driver.service';
+import { AuthService } from './auth.service';
 
 
 @Component({
@@ -16,7 +17,9 @@ import { DriverService } from './shared/driver.service';
 })
 export class AppComponent implements OnInit{
 
-  constructor( public driverService: DriverService) {}
+  constructor(
+      public driverService: DriverService,
+      public authService: AuthService) {}
 
   drivers:Driver[];
   subcomponent_name: string;
@@ -44,8 +47,8 @@ export class AppComponent implements OnInit{
     var msg = `change_active_menu(`+ next_active_menu + `)`;
     var len;
 
-    if (this.driverService.driverArray) {
-      len = this.driverService.driverArray.length;
+    if (this.authService.driverArray) {
+      len = this.authService.driverArray.length;
 
       console.log(`${msg} I now have ${len} drivers and am activing the ${next_active_menu} menu`);
 
@@ -54,7 +57,7 @@ export class AppComponent implements OnInit{
       this.driverService.active_menu = next_active_menu;
       this.subcomponent_name = this.driverService.active_menu;
     } else {
-      alert("driverService.driverArray is not initialized");
+      alert("authService.driverArray is not initialized");
     }
   }
 }

@@ -4,11 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
+import { Driver }                  from './shared/driver';
 
 @Injectable()
 export class AuthService {
   public isADriverSelected: boolean;
   public last_row_selected: number;
+  public driverArray: Driver[];
 
   constructor () {}
 

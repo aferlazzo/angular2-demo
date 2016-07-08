@@ -15,8 +15,8 @@ export class AuthGuard implements CanActivate {
       console.info('A row is selected. Continuing with the current process');
       return true;
     } else {
-      alert('Select a driver row by clicking on it to modify the driver');
       this.driverService.active_menu = "List";
+      alert('Select a driver row by clicking on it to modify the driver');
       this.router.navigate(['/list']);
       console.info('No row is selected. Returning to the List.');
       return false;
