@@ -4,21 +4,23 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
-import { DriverService }      from './shared/driver.service';
 
 @Injectable()
 export class AuthService {
-  isADriverSelected: boolean = false;
+  public isADriverSelected: boolean;
+  public last_row_selected: number;
 
-  constructor (public driverService: DriverService) {}
+  constructor () {}
 
   // find selected rows
   isRowSelected():boolean {
-    if (this.driverService.find_row_to_modify() > -1) {
-      this.isADriverSelected = true;
+    if ((!this.last_row_selected) || (this.last_row_selected == -1)) {
+      //alert('Select a driver row by clicking on it to modify');
+      this.isADriverSelected = false;
     } else {
       this.isADriverSelected = true;
     }
+
     return this.isADriverSelected;
   }
 }

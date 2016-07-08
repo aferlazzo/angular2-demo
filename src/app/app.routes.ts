@@ -6,7 +6,7 @@ import { DeleteComponent } from './+delete/delete.component';
 import { AboutComponent }  from './+about/about.component';
 import { AuthGuard }       from './auth.guard';
 import { AuthService }     from './auth.service';
-//import { CanDeactivateGuard }    from './interfaces';
+
 
 export const routes: RouterConfig = [
   {

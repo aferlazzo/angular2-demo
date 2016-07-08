@@ -2,7 +2,7 @@
   <form #f="ngForm" class="driver_form" [hidden]="submitted">
     <div class="form row">
       <div class="form-group">
-        <div class="col-md-offset-2 col-md-4">
+        <div class="col-md-offset-2 col-md-8">
           <label class="control-label" for="driver.drivername">
             User Name
           </label>
@@ -35,8 +35,7 @@
           </label>
           <input id="driver.email" [(ngModel)]="driver.email" class="form-control"
                  type="email" ngControl="email" required>
-        </div>
-        <div class="col-md-4">
+
           <label class="control-label" for="driver.address">
             Address
           </label>

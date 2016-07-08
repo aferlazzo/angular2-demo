@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding:0;
-  font-size: 1em;
+  font-size: 1.3rem;
   font-family: Cambria, Georgia;
 }
 h2, h3 {
@@ -131,7 +131,7 @@ footer {
   color: #fff;
   text-align: center;
   background-color: #9f917a;
-  padding-top: 1em;
+  padding-top: 0.5rem;
   position: fixed;
   bottom: 0;
   width:100%;

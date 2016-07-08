@@ -1,22 +1,74 @@
-.menu_name {
-	margin: 1em 0 0 0;
-	display: block;
-	position: relative;
-	width: 5.3em;
-	text-align: center;
-	color: #fff;
-}
 h1 {
-	height:5rem;
-	font-size: 3em;
+	height: 5rem;
+	font-size: 3rem;
 	background-color: #6c7a95;
 	margin: 0;
 	font-family: "open sans", sans-serif;
 	color: #fff;
-	padding: .25em;
+	padding: 0.55rem;
 	text-align: center;
 }
-/* Navigation link styles */
+#myNavbar {
+	display: flex; /* makes this parent a flex container and the children flex items */
+	align-items: center;
+	justify-content:space-around;
+	align-content:center;
+	flex-wrap:nowrap;
+	background-color: #FE8300;
+	padding-top: 0.3rem;
+}
+/* each router link has an attribute _ngcontent-tpx-1 */
+.router_item {
+	width: 7rem;
+	padding: 0.3rem 1rem;
+	text-align: center;
+}
+.router_item a {
+	text-align: center;
+	text-decoration: none;
+}
+.router_item a:hover,
+.router-item a:focus {
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+}
+.menu_icon {
+	font-size: 2rem;
+	border-radius: 50%;
+	padding: 0.6em;
+	width: 2.3em;
+	color: #eee;
+	border: 3px solid #eee;
+}
+.menu_icon:focus {
+	outline-width: 0;
+}
+.menu_icon.fa.fa-list-ul {
+	background-color: #24286a;
+}
+.menu_icon.fa.fa-plus {
+	background-color: #54ce47;
+}
+.menu_icon.fa.fa-exchange {
+	background-color: #A4286A;
+}
+.menu_icon.fa.fa-minus {
+	background-color: #803286;
+}
+.menu_icon.fa.fa-info{
+	background-color: #d93f96;
+}
+.menu_label {
+	margin: 0.1rem 0 0 0;
+	position: relative;
+	text-align: center;
+	color: #fff;
+	font-size: 1.4rem;
+}
+
+/* old Navigation link styles */
+/*
 .navbar {
 	margin-bottom: 0.1rem;
 	height: 8rem;
@@ -43,7 +95,7 @@ nav a {
 }
 nav .fa {
 	display: inline-block;
-	font-size: 2.1em;
+	font-size: 2rem;
 	border-radius: 50%;
 	margin: 0 auto -0.5em;
 	padding: 0.6em;
@@ -62,6 +114,7 @@ nav.navbar.navbar-default {
 }
 .nav.navbar-nav {
 	margin-bottom: 0;
+	font-size: 2rem;
 }
 .nav.navbar-nav .active .router-link-active {
 	font-weight: bold;
@@ -85,3 +138,4 @@ nav .fa.fa-info{
 	float: right;
 	margin-left: -1em;
 }
+*/

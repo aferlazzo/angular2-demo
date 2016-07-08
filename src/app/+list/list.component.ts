@@ -4,6 +4,7 @@ import { NgClass }            from '@angular/common';
 import { Driver }             from '../shared/driver';
 import { DriverService }      from '../shared/driver.service';
 import { SortService }        from './sort.service';
+import { AuthService }        from '../auth.service';
 
 @Component({
   moduleId: module.id,
@@ -18,7 +19,8 @@ export class ListComponent implements OnInit {
 
   constructor(
       public driverService: DriverService,
-      public sortService: SortService) {}
+      public sortService: SortService,
+      public authService: AuthService) {}
 
   drivers = this.driverService.driverArray;
   directionA = -1;
@@ -84,7 +86,6 @@ export class ListComponent implements OnInit {
 
   errorMessage = "";
   saved_drivername = "";
-  last_row_selected = -1;
 
   /*
    row_selected is the click handler toggling row selection
@@ -92,6 +93,11 @@ export class ListComponent implements OnInit {
   row_selected(i:number) {
     this.driverService.driverArray[i].selected = !this.driverService.driverArray[i].selected;
     let s = this.drivers[i].selected == true ? "" : " NOT";
+    if (s == "") {
+      this.authService.last_row_selected = i;
+    } else {
+      this.authService.last_row_selected = -1;
+    }
     console.log(`Row ${i} is${s} selected`);
   }
 

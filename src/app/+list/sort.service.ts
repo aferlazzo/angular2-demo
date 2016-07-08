@@ -7,7 +7,7 @@ export class SortService {
   the_result:[{ drivername:string, value:number }];
 
 
-  constructor(private driverService: DriverService) { }
+  constructor(public driverService: DriverService) { }
 
   drivers = this.driverService.driverArray;
 

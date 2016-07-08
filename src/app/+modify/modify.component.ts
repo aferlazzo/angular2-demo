@@ -57,32 +57,35 @@ export class ModifyComponent implements OnInit {
   selected_index:number;
 
   ngOnInit (){
-    this.driverService.fillDriverArray();
-    var myDrivers = this.driverService.driverArray;
-    console.log("(in modify.component.ts) driverArray has " + myDrivers.length + ' drivers');
-    // find selected rows
-    this.selected_index = this.driverService.find_row_to_modify();
+    if (this.driverService.driverArray) {
+      this.driverService.fillDriverArray();
 
+      // find selected rows
+      this.selected_index = this.authService.last_row_selected;
 
-    if (this.selected_index > -1) {
-      // populate this modify page form field model with existing driverArray data
-      let i = this.selected_index;
-      this.driver.selected    = this.driverService.driverArray[i].selected;
-      this.driver.drivername  = this.driverService.driverArray[i].drivername;
-      this.driver.password    = this.driverService.driverArray[i].password;
-      this.driver.ability     = this.driverService.driverArray[i].ability;
-      this.driver.firstname   = this.driverService.driverArray[i].firstname;
-      this.driver.lastname    = this.driverService.driverArray[i].lastname;
-      this.driver.email       = this.driverService.driverArray[i].email;
-      this.driver.address     = this.driverService.driverArray[i].address;
-      this.driver.city        = this.driverService.driverArray[i].city;
-      this.driver.state       = this.driverService.driverArray[i].state;
-      this.driver.zip         = this.driverService.driverArray[i].zip;
-      this.driver.phone       = this.driverService.driverArray[i].phone;
-    } else {
-      // go back to list view
-      this.driverService.active_menu = "List";
-      this.router.navigate(['/list']);
+      console.log("(in modify.component.ts) driverArray has " + this.driverService.driverArray.length + ' drivers');
+
+      if (this.selected_index > -1) {
+        // populate this modify page form field model with existing driverArray data
+        let i = this.selected_index;
+        this.driver.selected = this.driverService.driverArray[i].selected;
+        this.driver.drivername = this.driverService.driverArray[i].drivername;
+        this.driver.password = this.driverService.driverArray[i].password;
+        this.driver.ability = this.driverService.driverArray[i].ability;
+        this.driver.firstname = this.driverService.driverArray[i].firstname;
+        this.driver.lastname = this.driverService.driverArray[i].lastname;
+        this.driver.email = this.driverService.driverArray[i].email;
+        this.driver.address = this.driverService.driverArray[i].address;
+        this.driver.city = this.driverService.driverArray[i].city;
+        this.driver.state = this.driverService.driverArray[i].state;
+        this.driver.zip = this.driverService.driverArray[i].zip;
+        this.driver.phone = this.driverService.driverArray[i].phone;
+      } else {
+        //
+        // no row selected, go back to list view
+        this.driverService.active_menu = "List";
+        this.router.navigate(['/list']);
+      }
     }
   }
 

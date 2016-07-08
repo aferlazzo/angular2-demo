@@ -37,17 +37,25 @@ export class AppComponent implements OnInit{
 
   /*
    change_active_menu is the click handler for the navbar in the app.component.html file.
-   The configured routes determine what happens next...
+   The app.routes.ts file settings determine what happens next...
    */
 
   change_active_menu(next_active_menu:string) {
     var msg = `change_active_menu(`+ next_active_menu + `)`;
-    var zzz = this.driverService.driverArray.length;
+    var len;
 
-    console.log(`${msg} I now have ${zzz} drivers and am activing the ${next_active_menu} menu`);
+    if (this.driverService.driverArray) {
+      len = this.driverService.driverArray.length;
 
-    this.driverService.active_menu = next_active_menu;
+      console.log(`${msg} I now have ${len} drivers and am activing the ${next_active_menu} menu`);
+
+      // The driverService singleton means that there is only 1 instsance of it during page execution.
+      // This means that variables set by one component are visible by other components.
+      this.driverService.active_menu = next_active_menu;
+      this.subcomponent_name = this.driverService.active_menu;
+    } else {
+      alert("driverService.driverArray is not initialized");
+    }
   }
-
 }
 

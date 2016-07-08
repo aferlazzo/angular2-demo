@@ -19,7 +19,7 @@ export class AddComponent implements OnInit {
 
   constructor (
       private router: Router,
-      private driverService: DriverService
+      public driverService: DriverService
   ) { }
 
   ngOnInit() {

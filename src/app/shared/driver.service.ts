@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Driver }                  from './driver';
 import { MOCK_DRIVERS }            from './mock-drivers';
-
+import { AuthService }             from '../auth.service';
 
 
 /*
@@ -49,7 +49,8 @@ import { MOCK_DRIVERS }            from './mock-drivers';
 @Injectable()
 export class DriverService {
 
-  constructor(private http:Http) {  }
+  constructor(private http:Http,
+              public authService: AuthService) {  }
 
   /*
 
@@ -70,7 +71,7 @@ export class DriverService {
   // the model being shown on page
   errorMessage = '';
   saved_drivername = "";
-  last_row_selected = -1;
+  //public last_row_selected = -1;
 
   ngOninit() {
     this.fillDriverArray();
@@ -82,9 +83,9 @@ export class DriverService {
 
     /******************* uncomment block for mock data *****************************
      /*/
+     this.driverArray = MOCK_DRIVERS;
 
-    if (!this.driverArray) {
-      this.driverArray = MOCK_DRIVERS;
+     if (this.driverArray) {
       console.info('driver.service.ts in fillDriverArray() There are ' +
           this.driverArray.length + ' driver records in driverArray');
     }
@@ -219,23 +220,22 @@ export class DriverService {
    */
 
   find_first_row_to_delete():number {
-    var index;
 
     if (this.driverArray) {
       var len = this.driverArray.length;
-      index = -1;
+      this.authService.last_row_selected = -1;
 
       for (let i = 0; i < len; i++) {
         if (this.driverArray[i].selected == true) {
-          index = i;
+          this.authService.last_row_selected = i;
           break;
         }
       }
     } else {
-      index = -1;
+      this.authService.last_row_selected = -1;
     }
 
-    return index;
+    return this.authService.last_row_selected;
   }
 
   /*
@@ -247,21 +247,24 @@ export class DriverService {
    */
 
   find_row_to_modify():number {
-    var len = this.driverArray.length;
-    var index = -1;
-    var selectedCount = 0;
+    if (this.driverArray) {
+      var len = this.driverArray.length;
+      var selectedCount = 0;
 
-    for (let i = 0; i < len; i++) {
-      if (this.driverArray[i].selected == true) {
-        index = i;
-        selectedCount++;
+      for (let i = 0; i < len; i++) {
+        if (this.driverArray[i].selected == true) {
+          this.authService.last_row_selected = i;
+          selectedCount++;
+        }
       }
-    }
 
-    if (selectedCount > 1) {
-      index = -1;
+      if (selectedCount > 1) {
+        this.authService.last_row_selected = -1;
+      }
+      return this.authService.last_row_selected;
+    } else {
+      //alert("auth.guard.ts > auth.service.ts > driver.service.ts: this.driverArray is undefined");
     }
-    return index;
   }
 
 
@@ -427,6 +430,8 @@ export class DriverService {
       if (this.driverArray[i].selected == true) {
         console.log("modify_selected_driver_in_driverArray[" + i + "] updating selected row with drivername '" +
             driver.drivername + "'");
+
+        this.authService.last_row_selected = i;
 
         this.driverArray[i].selected    = driver.selected;
         this.driverArray[i].drivername  = driver.drivername;
