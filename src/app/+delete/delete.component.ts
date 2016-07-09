@@ -98,7 +98,7 @@ export class DeleteComponent implements OnInit {
               }
 
               // go to list view
-              this.driverService.active_menu = "List";
+              this.authService.active_menu = "List";
               this.router.navigate(['/list']);
             },
             error => {
@@ -108,7 +108,7 @@ export class DeleteComponent implements OnInit {
                 this.message.error = 'Unknown error';
               }
 
-              this.driverService.active_menu = "List";
+              this.authService.active_menu = "List";
               this.router.navigate(['/list']);
             }
         );
@@ -120,7 +120,7 @@ export class DeleteComponent implements OnInit {
       this.timerId = null;
     }
     // go to list view
-    this.driverService.active_menu = "List";
+    this.authService.active_menu = "List";
     this.router.navigate(['/list']);
   }
 

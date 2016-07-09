@@ -1,26 +1,26 @@
-<h1>Angular 2 Demo - {{driverService.active_menu}}</h1>
+<h1>Angular 2 Demo - {{authService.active_menu}}</h1>
 <div id="myNavbar" class="container-fluid">
-  <div [class.active]="driverService.active_menu=='List'" class="router_item">
+  <div [class.active]="authService.active_menu=='List'" class="router_item">
     <a [routerLink]="['/list']" (click)='change_active_menu("List")'>
       <div class="menu_icon fa fa-list-ul"></div>
       <div class="menu_label">List</div></a>
   </div>
-  <div [class.active]="driverService.active_menu=='Add'" class="router_item">
+  <div [class.active]="authService.active_menu=='Add'" class="router_item">
     <a [routerLink]="['/add']" (click)='change_active_menu("Add")'>
       <div class="menu_icon fa fa-plus"></div>
       <div class="menu_label">Add</div></a>
   </div>
-  <div [class.active]="driverService.active_menu=='Modify'" class="router_item">
+  <div [class.active]="authService.active_menu=='Modify'" class="router_item">
     <a [routerLink]="['/modify']" (click)='change_active_menu("Modify")'>
       <div class="menu_icon fa fa-exchange"></div>
       <div class="menu_label">Modify</div></a>
   </div>
-  <div [class.active]="driverService.active_menu=='Delete'" class="router_item">
+  <div [class.active]="authService.active_menu=='Delete'" class="router_item">
     <a [routerLink]="['/delete']" (click)='change_active_menu("Delete")'>
       <div class="menu_icon fa fa-minus"></div>
       <div class="menu_label">Delete</div></a>
   </div>
-  <div [class.active]="driverService.active_menu=='About'" class="router_item">
+  <div [class.active]="authService.active_menu=='About'" class="router_item">
     <a [routerLink]="['/about']" (click)='change_active_menu("About")'>
       <div class="menu_icon fa fa-info"></div>
       <div class="menu_label">About</div></a>

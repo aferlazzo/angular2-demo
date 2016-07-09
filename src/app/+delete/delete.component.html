@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="delete_alert row">
     <p>
         <span *ngIf="message.error" class="col-md-offset-4 alert alert-danger">
           {{message.error}}</span>
@@ -12,10 +12,6 @@
         </span>
     </p>
   </div>
-</div>
-<div id="my-alert" [ngClass]="{hide_alert:(first_selected_row_index > -1)}">
-  <p>To delete drivers, first select one or more rows from driver list</p>
-  <p><button class="btn" (click)="clearTimeout()">Ok</button></p>
 </div>
 <div class="footer navbar-fixed-bottom">
   <footer>

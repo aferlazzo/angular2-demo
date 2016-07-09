@@ -78,7 +78,7 @@ export class ModifyComponent implements OnInit {
 
   cancel_modify() {
     // go back to list view
-    this.driverService.active_menu = "List";
+    this.authService.active_menu = "List";
     this.router.navigate(['/list']);
   }
 
@@ -92,7 +92,7 @@ export class ModifyComponent implements OnInit {
           this.message.success = 'Driver ' + this.driver.drivername + ' updated';
 
           // go back to list view
-          this.driverService.active_menu = "List";
+          this.authService.active_menu = "List";
           this.router.navigate(['/list']);
         },
         error => {

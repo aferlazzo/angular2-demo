@@ -73,3 +73,6 @@ span .btn {
 .hide_alert {
 	display:none;
 }
+.delete_alert.row {
+	margin-top: 10rem;
+}

@@ -11,6 +11,7 @@ export class AuthService {
   public isADriverSelected: boolean;
   public last_row_selected: number;
   public driverArray: Driver[];
+  public active_menu: string = 'List';
 
   constructor () {}
 

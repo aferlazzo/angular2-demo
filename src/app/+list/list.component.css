@@ -127,3 +127,20 @@ td:hover {
 /* headings */
 
 .hidden { display:none; }
+
+#my-alert {
+	top: 50vh;
+	position: absolute;
+	width: 29rem;
+	height: 12rem;
+	border: 2px solid #f00;
+	border-radius: 4px;
+	left: 40vw;
+	background: #fff;
+	padding: 1rem;
+	font-weight: 700;
+}
+#my-alert .btn {
+	position: absolute;
+	left: 80%;
+}

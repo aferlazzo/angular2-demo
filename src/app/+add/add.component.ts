@@ -5,6 +5,7 @@ import { Driver }             from '../shared/driver';
 import { DriverService }      from '../shared/driver.service';
 import { SelectService }      from '../shared/select.service';
 import { EqualValidator }     from './equal-validator.directive';
+import { AuthService }        from '../auth.service';
 
 @Component({
   moduleId: module.id,
@@ -18,6 +19,7 @@ import { EqualValidator }     from './equal-validator.directive';
 export class AddComponent implements OnInit {
 
   constructor (
+      public authService: AuthService,
       private router: Router,
       public driverService: DriverService
   ) { }
@@ -124,7 +126,7 @@ export class AddComponent implements OnInit {
 
   cancel_add() {
     // go back to list view
-    this.driverService.active_menu = "List";
+    this.authService.active_menu = "List";
     this.router.navigate(['/list']);
   }
 
@@ -145,7 +147,7 @@ export class AddComponent implements OnInit {
               this.driverService.add_driver_to_driverArray(this.current_driver);
 
               // go back to list view
-              this.driverService.active_menu = "List";
+              this.authService.active_menu = "List";
               this.router.navigate(['/list']);
             },
             error => {

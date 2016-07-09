@@ -94,6 +94,11 @@ export class ListComponent implements OnInit {
     this.authService.driverArray[i].selected = !this.authService.driverArray[i].selected;
     let s = this.drivers[i].selected == true ? "" : " NOT";
     if (s == "") {
+      for (let x = 0; x < this.authService.driverArray.length; x++) {
+        if (x != i) {
+          this.drivers[x].selected = false;
+        }
+      }
       this.authService.last_row_selected = i;
     } else {
       this.authService.last_row_selected = -1;

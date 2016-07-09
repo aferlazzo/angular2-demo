@@ -25,7 +25,7 @@ export class AppComponent implements OnInit{
   subcomponent_name: string;
 
   ngOnInit() {
-    this.subcomponent_name = this.driverService.active_menu;
+    this.subcomponent_name = this.authService.active_menu;
     console.info('app.component.ts initialized and on page ' + this.subcomponent_name);
 
     // this is where the drivers list gets loaded....
@@ -54,8 +54,8 @@ export class AppComponent implements OnInit{
 
       // The driverService singleton means that there is only 1 instsance of it during page execution.
       // This means that variables set by one component are visible by other components.
-      this.driverService.active_menu = next_active_menu;
-      this.subcomponent_name = this.driverService.active_menu;
+      this.authService.active_menu = next_active_menu;
+      this.subcomponent_name = this.authService.active_menu;
     } else {
       alert("authService.driverArray is not initialized");
     }
