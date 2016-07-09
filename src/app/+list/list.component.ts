@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FORM_DIRECTIVES, FORM_PROVIDERS } from '@angular/common';
 import { NgClass }            from '@angular/common';
 import { Driver }             from '../shared/driver';
-import { DriverService }      from '../shared/driver.service';
 import { SortService }        from './sort.service';
 import { AuthService }        from '../auth.service';
 
@@ -18,7 +17,6 @@ import { AuthService }        from '../auth.service';
 export class ListComponent implements OnInit {
 
   constructor(
-      public driverService: DriverService,
       public sortService: SortService,
       public authService: AuthService) {}
 

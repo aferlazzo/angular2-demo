@@ -1,7 +1,6 @@
 
 import {Injectable}                from '@angular/core';
 import {Http, Response, Headers}  from '@angular/http';
-import {RequestOptions}            from '@angular/http';
 import { Driver }                  from './driver';
 import {Observable}                from 'rxjs/Observable';
 

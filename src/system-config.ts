@@ -24,9 +24,9 @@ const barrels: string[] = [
   '@angular/compiler',
   '@angular/forms',
   '@angular/http',
-  '@angular/router',
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
+  '@angular/router',
 
   // Thirdparty barrels.
   'rxjs',

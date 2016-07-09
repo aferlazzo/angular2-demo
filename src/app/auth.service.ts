@@ -1,10 +1,8 @@
-import { Component, OnInit }  from '@angular/core';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
-import { Driver }                  from './shared/driver';
+import { Driver }  from './shared/driver';
 
 @Injectable()
 export class AuthService {
