@@ -4,7 +4,7 @@ import { DriverService }  from '../shared/driver.service';
 import { AuthService } from '../auth.service';
 @Injectable()
 export class SortService {
-  the_result:[{ drivername:string, value:number }];
+  the_result:[{ drivername: string, value: number }];
 
 
   constructor(
@@ -26,7 +26,7 @@ export class SortService {
    drivers[0].drivername == drivers[0]["drivername"]
    drivers[0].firstname == drivers[0]["firstname"]
    */
-  sortDrivers(array: Driver[], sortByPropertyName:string, direction:string) {
+  sortDrivers(array: Driver[], sortByPropertyName: string, direction: string) {
     let d = 1; // ascending : 1 | descending : -1
     array.sort((a, b) => {
       if (direction == 'descending') {
@@ -52,7 +52,7 @@ export class SortService {
     let len = (this.the_result).length;
     let i:number;
     for (i = 0; i < len; i = i + 1) {
-      console.log("drivername: " + this.the_result[i].drivername + " value: " + this.the_result[i].value);
+      console.log('drivername: ' + this.the_result[i].drivername + ' value: ' + this.the_result[i].value);
     }
   }
 }

@@ -1,11 +1,10 @@
 h1 {
 	height: 5rem;
-	font-size: 2.6rem;
+	font-size: 4rem;
 	background-color: #6c7a95;
 	margin: 0;
 	font-family: "open sans", sans-serif;
 	color: #fff;
-	padding: 0.55rem;
 	text-align: center;
 }
 #myNavbar {
@@ -18,28 +17,35 @@ h1 {
 	padding-top: 0.3rem;
 }
 /* each router link has an attribute _ngcontent-tpx-1 */
-.router_item {
+#myNavbar .router_item {
 	width: 7rem;
 	padding: 0.3rem 1rem;
 	text-align: center;
 }
-.router_item a {
+#myNavbar .router_item a {
 	text-align: center;
 	text-decoration: none;
 }
-.router_item a:hover,
-.router-item a:focus {
-	text-align: center;
-	text-decoration: none;
-	font-weight: bold;
+#myNavbar .router_item.active,
+#myNavbar .router_item a:hover,
+#myNavbar .router_item a:focus {
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+}
+#myNavbar .router_item.active .menu-icon,
+#myNavbar .router_item a:hover .menu_icon,
+#myNavbar .router_item a:focus .menu_icon{
+  border-color: #fff;
+  color: #fff;
 }
 .menu_icon {
 	font-size: 2rem;
 	border-radius: 50%;
 	padding: 0.6em;
-	width: 2.3em;
+	width: 2.5em;
 	color: #eee;
-	border: 1px solid #eee;
+	border: 3px solid #eee;
 }
 .menu_icon:focus {
 	outline-width: 0;

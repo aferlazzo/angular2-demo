@@ -1,6 +1,5 @@
 import { Component, OnInit }  from '@angular/core';
 import { Router } from '@angular/router';
-import {Http, Response, Headers}   from '@angular/http';
 import { Driver }             from '../shared/driver';
 import { DriverService }      from '../shared/driver.service';
 import { SelectService }      from '../shared/select.service';
@@ -29,7 +28,7 @@ export class AddComponent implements OnInit {
     console.info('add.component.ts initialized');
   }
 
-  private message = {
+  message = {
     success: '',
     error: ''
   };
@@ -80,32 +79,6 @@ export class AddComponent implements OnInit {
 
   submitted = false;
 
-  /*
-
-  A Control can be bound to an input element, and takes 3 arguments (all optional);
-  a default value, a validator and a asynchronous validator.
-  For example
-
-  this.drivername = new Control('Default value', Validators.required, UsernameValidator.checkIfAvailable);
-
-  Which can be used in your HTML using the "ngControl" directive.
-
-  <input required type="text" ngControl="drivername" />
-
-  And use the following HTML to show the related error message
-
-  <div *ngIf="drivername.dirty && !drivername.valid">
-  <p *ngIf="drivername.errors.minlength">
-  A drivername needs to be at least 4 characters.
-  </p>
-  </div>
-
-  */
-
-
-
-
-
   clear_driver(driver:Driver) {
     driver.selected = false;
     driver.drivername = '';
@@ -126,7 +99,7 @@ export class AddComponent implements OnInit {
 
   cancel_add() {
     // go back to list view
-    this.authService.active_menu = "List";
+    this.authService.active_menu = 'List';
     this.router.navigate(['/list']);
   }
 
@@ -143,11 +116,11 @@ export class AddComponent implements OnInit {
         .subscribe(
             driver  => {
               this.message.success = 'Driver ' + this.driver.drivername + ' added';
-              //**** must add new driver to end of driver_array, so the list view will reflect this new driver ***
+              // **** must add new driver to end of driver_array, so the list view will reflect this new driver ***
               this.driverService.add_driver_to_driverArray(this.current_driver);
 
               // go back to list view
-              this.authService.active_menu = "List";
+              this.authService.active_menu = 'List';
               this.router.navigate(['/list']);
             },
             error => {

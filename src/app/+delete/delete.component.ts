@@ -22,7 +22,7 @@ export class DeleteComponent implements OnInit {
       private router: Router) {
   }
 
-  private message = {
+  message = {
     success: '',
     error: ''
   };
@@ -47,7 +47,7 @@ export class DeleteComponent implements OnInit {
       console.debug("delay " + this.milliseconds_to_delay + " before a driver delete");
 
       console.debug('first_selected_index: ' + this.first_selected_row_index);
-      //at least one driver row is selected
+      // at least one driver row is selected
       this.message.success = 'Deleted driver ' +
           this.authService.driverArray[this.first_selected_row_index].drivername;
 
@@ -85,7 +85,7 @@ export class DeleteComponent implements OnInit {
 
               // check for another selected driver row...
               next_selected_row_index = this.driverService.find_first_row_to_delete();
-              //don't delay after the first driver in a series of drivers to be deleted has been deleted.
+              // don't delay after the first driver in a series of drivers to be deleted has been deleted.
               this.milliseconds_to_delay = 0;
               console.debug("delay " + this.milliseconds_to_delay + " before next driver delete");
 

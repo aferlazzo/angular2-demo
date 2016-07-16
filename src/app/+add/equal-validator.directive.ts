@@ -14,7 +14,9 @@ export class EqualValidator implements Validator {
     }
 
     private get isReverse() {
-        if (!this.reverse) return false;
+        if (!this.reverse) {
+          return false;
+        }
         return this.reverse === 'true' ? true: false;
     }
 
@@ -26,14 +28,18 @@ export class EqualValidator implements Validator {
         let e = c.root.find(this.validateEqual);
 
         // value not equal
-        if (e && v !== e.value && !this.isReverse) return {
+        if (e && v !== e.value && !this.isReverse) {
+          return {
             validateEqual: false
-        };
+          };
+        }
 
         // value equal and reverse
         if (e && v === e.value && this.isReverse) {
             delete e.errors['validateEqual'];
-            if (!Object.keys(e.errors).length) e.setErrors(null);
+            if (!Object.keys(e.errors).length) {
+              e.setErrors(null);
+            }
         }
 
         // value not equal and reverse
