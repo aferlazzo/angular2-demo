@@ -19,6 +19,7 @@ import { AuthService }        from '../auth.service';
 export class ModifyComponent implements OnInit {
 
   driver_form: FormGroup;
+  active = true;
 
   constructor(
       public authService: AuthService,

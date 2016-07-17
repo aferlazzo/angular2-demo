@@ -1,5 +1,5 @@
 <div class="component-top container-fluid">
-  <form [formGroup] = "driver_form" autocomplete="off" novalidate>
+  <form *ngIf="active" (ngSubmit)="modify_driver(driver)" #driver_form="ngForm" autocomplete="off">
     <div class="form row">
       <div class="form-group">
         <div class="col-md-offset-2 col-md-8">
@@ -30,7 +30,7 @@
           </div>
 
           <label class="control-label" for="driver_ability">Driving Ability</label>
-          <select id="driver_ability" class="form-control"  required [(ngModel)]="driver.ability" #spy5
+          <select id="driver_ability" [(ngModel)]="driver.ability" #spy5
                   name="ability" #ability="ngModel">
             <option *ngFor="let ab of driving_ability_list" [value]="ab">{{ab}}</option>
           </select>
@@ -88,9 +88,9 @@
                 <input type="button" class="btn" value="Cancel" (click)="cancel_modify()">
               </span>
             <span class="col-md-5 text-right">
-                  <input type="submit" class="btn btn-primary" (click)="modify_driver(driver)"
-                         value="Modify">
-              </span>
+                  <input type="submit" class="btn btn-primary"
+                         [disabled]="!driver_form.form.valid" value="Modify">
+            </span>
           </div>
         </div>
       </div>

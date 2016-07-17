@@ -19,6 +19,7 @@ import { AuthService }        from '../auth.service';
 export class AddComponent implements OnInit {
 
   driver_form: FormGroup;
+  active = true;
 
   constructor (
       public authService: AuthService,
@@ -158,12 +159,5 @@ export class AddComponent implements OnInit {
             }
         );
   }
-
-
-  // click handler for the drive ability list items
-  update_ability(e:Event, chosen:string) {
-    e.preventDefault();
-    this.chosen_ability = chosen;
-    this.driver.ability = chosen;
-  }
+  
 }
