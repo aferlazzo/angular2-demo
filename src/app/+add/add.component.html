@@ -1,72 +1,89 @@
 <div class="container-fluid">
-  <form #f="ngForm" class="driver_form" [hidden]="submitted">
+  <form [formGroup] = "driver_form" autocomplete="off" novalidate>
     <div class="form row">
       <div class="form-group">
         <div class="col-md-offset-2 col-md-8">
-          <label class="control-label" for="driver.drivername">
-            User Name
-          </label>
-          <input id="driver.drivername" [(ngModel)]="driver.drivername" class="form-control"
-                 type="text" ngControl="drivername">
 
-          <label class="control-label" for="driver.firstname">
-            First Name
-          </label>
-          <input id="driver.firstname" [(ngModel)]="driver.firstname" class="form-control"
-                 type="text" ngControl="firstname" required>
+          <label class="control-label" for="driver.drivername">Driver Name</label>
+          <input id="driver.drivername" [(ngModel)]="driver.drivername" #spy1 name="drivername" #drivername="ngModel"
+                 type="text" class="form-control"  required minlength="6">
+          <div [hidden]="drivername.valid || drivername.pristine" class="alert alert-danger">
+            Driver Name is required (minimum length 6 characters)
+          </div>
 
-          <label class="control-label" for="driver.lastname">
-            Last Name
-          </label>
-          <input id="driver.lastname" [(ngModel)]="driver.lastname" class="form-control"
-                 type="text" ngControl="lastname" required>
+          <label class="control-label" for="driver.firstname">First Name</label>
+          <input id="driver.firstname" [(ngModel)]="driver.firstname" #spy2 name="firstname" #firstname="ngModel"
+                 type="text" class="form-control" required>
+          <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">
+            First Name is required
+          </div>
+
+          <label class="control-label" for="driver.lastname">Last Name</label>
+          <input id="driver.lastname" [(ngModel)]="driver.lastname" #spy3 name="lastname" #lastname="ngModel"
+                 type="text" class="form-control" required>
+          <div [hidden]="lastname.valid || lastname.pristine" class="alert alert-danger">
+            Last Name is required
+          </div>
 
           <label class="control-label" for="driver.password">Password</label>
-          <input id="driver.password" [(ngModel)]="driver.password" class="form-control"
-                 type="text" ngControl="password" required>
+          <input id="driver.password" [(ngModel)]="driver.password" #spy4 name="password" #password="ngModel"
+                 type="text" class="form-control" required minlength="8">
+          <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+            Password (minimum 8 characters) is required
+          </div>
 
           <label class="control-label" for="driver_ability">Driving Ability</label>
-          <select id="driver_ability" class="form-control" required [(ngModel)]="driver.ability">
+          <select id="driver_ability" class="form-control"  required [(ngModel)]="driver.ability" #spy5
+                  name="ability" #ability="ngModel">
             <option *ngFor="let ab of driving_ability_list" [value]="ab">{{ab}}</option>
           </select>
+          <div [hidden]="ability.valid || ability.pristine" class="alert alert-danger">
+            Choose Driver's ability
+          </div>
 
-          <label class="control-label" for="driver.email">
-            Email
-          </label>
-          <input id="driver.email" [(ngModel)]="driver.email" class="form-control"
-                 type="email" ngControl="email" required>
+          <label class="control-label" for="driver.email">Email</label>
+          <input id="driver.email" [(ngModel)]="driver.email" #spy6 name="email" #email="ngModel"
+                 type="email" class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+          <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+            Email is required
+          </div>
 
-          <label class="control-label" for="driver.address">
-            Address
-          </label>
-          <input id="driver.address" [(ngModel)]="driver.address" class="form-control"
-                 type="text" ngControl="address" required>
-          <label class="control-label" for="driver.city">
-            City
-          </label>
-          <input id="driver.city" [(ngModel)]="driver.city" class="form-control"
-                 type="text" ngControl="city" required>
+          <label class="control-label" for="driver.address">Address</label>
+          <input id="driver.address" [(ngModel)]="driver.address" #spy7 name="address" #address="ngModel"
+                 type="text" class="form-control" required>
+          <div [hidden]="address.valid || address.pristine" class="alert alert-danger">
+            Address is required
+          </div>
+
+          <label class="control-label" for="driver.city">City</label>
+          <input id="driver.city" [(ngModel)]="driver.city" #spy8 name="city" #city="ngModel"
+                 type="text" class="form-control" required>
+          <div [hidden]="city.valid || city.pristine" class="alert alert-danger">
+            City is required
+          </div>
 
           <label class="control-label" for="driver_state">State</label>
-          <select id="driver_state" class="form-control" required [(ngModel)]="driver.state">
+          <select id="driver_state" class="form-control" required [(ngModel)]="driver.state" #spy9
+                  name="state" #state="ngModel">
             <option *ngFor="let ab of state_abbreviation_list" [value]="ab">{{ab}}</option>
           </select>
+          <div [hidden]="state.valid || state.pristine" class="alert alert-danger">
+            State is required
+          </div>
 
-          <label class="control-label" for="driver.zip">
-            Zipcode
-          </label>
-          <input id="driver.zip" [(ngModel)]="driver.zip" class="form-control"
-                 type="text" ngControl="zip" required>
-          <label class="control-label" for="driver.phone">
-            Phone
-          </label>
-          <input id="driver.phone" [(ngModel)]="driver.phone" class="form-control"
-                 type="tel" ngControl="phone" required pattern="[2-9][0-9]{2}-[0-9]{3}-[0-9]{4}"
-                 title="North American format: XXX-XXX-XXXX"
-                 type="text" ngControl="phone" required>
-          <div class="row">
-            <span *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</span>
-            <span *ngIf="successMessage" class="alert alert-success">{{successMessage}}</span>
+          <label class="control-label" for="driver.zip">Zip Code</label>
+          <input id="driver.zip" [(ngModel)]="driver.zip" #spy10 name="zip" #zip="ngModel"
+                 type="text" class="form-control" required pattern="(\d{5}([\-]\d{4})?)">
+          <div [hidden]="zip.valid || zip.pristine" class="alert alert-danger">
+            A 5 (xxxxx) or 9 digit (xxxxx-xxxx) Zip Code is required
+          </div>
+
+          <label class="control-label" for="driver.phone">Phone</label>
+          <input id="driver.phone" [(ngModel)]="driver.phone" #spy11 name="phone" #phone="ngModel"
+                 type="text" class="form-control" required pattern="[2-9][0-9]{2}-[0-9]{3}-[0-9]{4}"
+                 title="North American format: XXX-XXX-XXXX">
+          <div [hidden]="phone.valid || phone.pristine" class="alert alert-danger">
+            Phone (format: XXX-XXX-XXXX) is required
           </div>
 
           <div class="form btn_row">
@@ -75,7 +92,7 @@
               </span>
               <span class="col-md-5 text-right">
                   <input type="submit" class="btn btn-primary" (click)="add_driver(driver)"
-                         [disabled]="!f.form.valid" value="Add">
+                          value="Add">
               </span>
           </div>
         </div>

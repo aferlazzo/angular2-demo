@@ -1,4 +1,6 @@
 import { Component, OnInit }  from '@angular/core';
+import { FormGroup, FormControl,
+    REACTIVE_FORM_DIRECTIVES, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 import { Driver }             from '../shared/driver';
 import { DriverService }      from '../shared/driver.service';
@@ -12,16 +14,56 @@ import { AuthService }        from '../auth.service';
   templateUrl: 'add.component.html',
   styleUrls: ['add.component.css'],
   providers: [ SelectService, Driver ],
-  directives: [EqualValidator]
+  directives: [REACTIVE_FORM_DIRECTIVES]
 })
 
 export class AddComponent implements OnInit {
 
+  driver_form: FormGroup;
+
   constructor (
       public authService: AuthService,
       private router: Router,
-      public driverService: DriverService
-  ) { }
+      public driverService: DriverService) {
+    this.driver_form = new FormGroup ({
+      drivername: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6)
+      ]),
+      firstname:  new FormControl('', [
+        Validators.required
+      ]),
+      lastname:   new FormControl('', [
+        Validators.required
+      ]),
+      password:   new FormControl('', [
+        Validators.required
+      ]),
+      ability:   new FormControl('', [
+        Validators.required
+      ]),
+      email:     new FormControl('', [
+        Validators.required
+      ]),
+      address:   new FormControl('', [
+        Validators.required
+      ]),
+      city:      new FormControl('', [
+        Validators.required
+      ]),
+      state:     new FormControl('', [
+        Validators.required
+      ]),
+      zip:       new FormControl('', [
+        Validators.required
+      ]),
+      phone:     new FormControl('', [
+        Validators.required
+      ]),
+
+    });
+
+  }
 
   ngOnInit() {
     this.driver = this.clear_driver(this.driver);

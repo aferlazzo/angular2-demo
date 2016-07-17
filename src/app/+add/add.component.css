@@ -29,13 +29,3 @@ button:disabled {
 	text-align: left;
 	border: 1px solid #ccc;
 }
-
-#driver_ability,
-#driver_state {
-	width: 100%;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	height:34px;
-	font-size: 14px;
-	font-family: Arial, Helvetica, sans-serif;
-}

@@ -295,7 +295,7 @@ export class DriverService {
     let add_url = "./app/services/add_endpoint.php";
 
     console.log("add_driver_to_database() found selected row: the driver '" +
-        driver_json_input.drivername + "', POST to delete_url " + add_url + " with stringified_json '" +
+        driver_json_input.drivername + "', POST to add_url " + add_url + " with stringified_json '" +
         stringified_json + "'");
 
     return this.http.post(add_url, stringified_json, options)
