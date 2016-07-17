@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="component-top container-fluid">
   <form [formGroup] = "driver_form" autocomplete="off" novalidate>
     <div class="form row">
       <div class="form-group">
@@ -88,7 +88,7 @@
 
           <div class="form btn_row">
               <span class="col-md-7 text-right">
-                <input type="button" class="btn" value="Cancel" (click)="cancel_modify()">
+                <input type="button" class="btn" value="Cancel" (click)="cancel_add()">
               </span>
               <span class="col-md-5 text-right">
                   <input type="submit" class="btn btn-primary" (click)="add_driver(driver)"
@@ -100,9 +100,3 @@
     </div>
   </form>
 </div>
-<div class="footer navbar-fixed-bottom">
-  <footer>
-    <p class="row text-center">&copy; Tony Ferlazzo, 2016</p>
-  </footer>
-</div>
-

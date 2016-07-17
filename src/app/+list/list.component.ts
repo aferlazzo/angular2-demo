@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FORM_DIRECTIVES, FORM_PROVIDERS } from '@angular/common';
 import { NgClass }            from '@angular/common';
 import { Driver }             from '../shared/driver';
 import { SortService }        from './sort.service';
@@ -10,8 +9,8 @@ import { AuthService }        from '../auth.service';
   selector: 'app-list',
   templateUrl: 'list.component.html',
   styleUrls: ['list.component.css'],
-  providers:  [ FORM_PROVIDERS, Driver, SortService ],
-  directives: [FORM_DIRECTIVES, NgClass]
+  providers:  [ Driver, SortService ],
+  directives: [NgClass]
 })
 
 export class ListComponent implements OnInit {

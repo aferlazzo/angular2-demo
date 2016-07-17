@@ -1,28 +1,68 @@
 import { Component, OnInit }  from '@angular/core';
-import { HTTP_PROVIDERS }     from '@angular/http';
-import { Router }             from '@angular/router';
-import { NgClass }            from '@angular/common';
+import { FormGroup, FormControl,
+    REACTIVE_FORM_DIRECTIVES, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
 import { Driver }             from '../shared/driver';
 import { DriverService }      from '../shared/driver.service';
 import { SelectService }      from '../shared/select.service';
 import { AuthService }        from '../auth.service';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
   moduleId: module.id,
   selector: 'app-modify',
   templateUrl: 'modify.component.html',
   styleUrls: ['modify.component.css'],
-  providers:  [ SelectService, Driver, DriverService, HTTP_PROVIDERS ],
-  directives: [ NgClass, ROUTER_DIRECTIVES ]})
+  providers: [SelectService, Driver],
+  directives: [REACTIVE_FORM_DIRECTIVES]
+})
 
 export class ModifyComponent implements OnInit {
+
+  driver_form: FormGroup;
 
   constructor(
       public authService: AuthService,
       public driverService: DriverService,
-      private router: Router
-  ) {  }
+      private router: Router) {
+    this.driver_form = new FormGroup ({
+      drivername: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6)
+      ]),
+      firstname:  new FormControl('', [
+        Validators.required
+      ]),
+      lastname:   new FormControl('', [
+        Validators.required
+      ]),
+      password:   new FormControl('', [
+        Validators.required
+      ]),
+      ability:   new FormControl('', [
+        Validators.required
+      ]),
+      email:     new FormControl('', [
+        Validators.required
+      ]),
+      address:   new FormControl('', [
+        Validators.required
+      ]),
+      city:      new FormControl('', [
+        Validators.required
+      ]),
+      state:     new FormControl('', [
+        Validators.required
+      ]),
+      zip:       new FormControl('', [
+        Validators.required
+      ]),
+      phone:     new FormControl('', [
+        Validators.required
+      ]),
+
+    });
+
+  }
 
   private message = {
     success: '',

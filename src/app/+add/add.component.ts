@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { Driver }             from '../shared/driver';
 import { DriverService }      from '../shared/driver.service';
 import { SelectService }      from '../shared/select.service';
-import { EqualValidator }     from './equal-validator.directive';
 import { AuthService }        from '../auth.service';
 
 @Component({
@@ -74,21 +73,6 @@ export class AddComponent implements OnInit {
     success: '',
     error: ''
   };
-  /*
-  driverForm = new FormGroup ({
-    drivername: new FormControl(),
-    firstname: new FormControl(),
-    lastname: new FormControl(),
-    password: new FormControl(),
-    ability: new FormControl(),
-    email: new FormControl(),
-    address: new FormControl(),
-    city: new FormControl(),
-    state: new FormControl(),
-    zip: new FormControl(),
-    phone:new FormControl()
-  })
-  */
 
 
   // for dropdown lists
