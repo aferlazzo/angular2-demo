@@ -82,25 +82,25 @@ export class DriverService {
     console.info('driver.service.ts in fillDriverArray()');
 
     /******************* uncomment block for mock data *****************************
-     /*/
+     /*
      this.authService.driverArray = MOCK_DRIVERS;
 
      if (this.authService.driverArray) {
       console.info('driver.service.ts in fillDriverArray() There are ' +
           this.authService.driverArray.length + ' driver records in driverArray');
     }
-     /*/
+     */
 
     /*******************************************************************************
      *                                                                             *
-     *  NOTE: Make sure you are not trying to run live data when using port 3000.  *
+     *  NOTE: Make sure you are not trying to run live data when using port 4200.  *
      *  The PHP endpoints do not work well when they're run on localhost:3000 or   *
-     *  even 127.0.0.1:3000 when using WAMP as the local server.                   *
+     *  even 127.0.0.1:4200 when using WAMP as the local server.                   *
      *                                                                             *
      ******************* uncomment block for live data *****************************
-     /*
+     /*/
     this.getDriverList();
-    /*
+    /*/
     /* *****************************************************************************/
   }
 
