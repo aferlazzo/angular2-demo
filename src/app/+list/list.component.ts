@@ -77,12 +77,11 @@ export class ListComponent implements OnInit {
 
 
   ngOnInit() {
-    console.info('list.component.ts initialized');
     this.clearSortIndicators();
+    this.sortByDriverName();
+    console.info('list.component.ts initialized, sorted by DriverName');
   }
 
-  errorMessage = "";
-  saved_drivername = "";
 
   /*
    toggle_row_selection is the click handler toggling row selection
@@ -118,7 +117,7 @@ export class ListComponent implements OnInit {
       this.drivername_down_arrow_hidden = false;
       this.sortService.sortDrivers(this.authService.driverArray, 'drivername', 'descending');
     }
-    console.log(`sort by drivername (${this.directionA})`);
+    //console.log(`sort by drivername (${this.directionA})`);
   }
 
   /*
@@ -136,7 +135,7 @@ export class ListComponent implements OnInit {
       this.firstname_down_arrow_hidden = false;
       this.sortService.sortDrivers(this.authService.driverArray, 'firstname', 'descending');
     }
-    console.log(`sort by firstname (${this.directionB})`);
+    //console.log(`sort by firstname (${this.directionB})`);
   }
 
   /*
@@ -154,7 +153,7 @@ export class ListComponent implements OnInit {
       this.lastname_down_arrow_hidden = false;
       this.sortService.sortDrivers(this.authService.driverArray, 'lastname', 'descending');
     }
-    console.log(`sort by lastname (${this.directionC})`);
+    //console.log(`sort by lastname (${this.directionC})`);
   }
 
   /*
@@ -172,7 +171,7 @@ export class ListComponent implements OnInit {
       this.ability_down_arrow_hidden = false;
       this.sortService.sortDrivers(this.authService.driverArray, 'ability', 'descending');
     }
-    console.log(`sort by ability (${this.directionD})`);
+    //console.log(`sort by ability (${this.directionD})`);
   }
 
   /*
@@ -190,7 +189,7 @@ export class ListComponent implements OnInit {
       this.email_down_arrow_hidden = false;
       this.sortService.sortDrivers(this.authService.driverArray, 'email', 'descending');
     }
-    console.log(`sort by email (${this.directionE})`);
+    //console.log(`sort by email (${this.directionE})`);
   }
 
   /*
@@ -208,7 +207,7 @@ export class ListComponent implements OnInit {
       this.address_down_arrow_hidden = false;
       this.sortService.sortDrivers(this.authService.driverArray, 'address', 'descending');
     }
-    console.log(`sort by address (${this.directionF})`);
+    //console.log(`sort by address (${this.directionF})`);
   }
 
   /*
@@ -226,7 +225,7 @@ export class ListComponent implements OnInit {
       this.city_down_arrow_hidden = false;
       this.sortService.sortDrivers(this.authService.driverArray, 'city', 'descending');
     }
-    console.log(`sort by City (${this.directionG})`);
+    //console.log(`sort by City (${this.directionG})`);
   }
 
   /*
@@ -244,7 +243,7 @@ export class ListComponent implements OnInit {
       this.state_down_arrow_hidden = false;
       this.sortService.sortDrivers(this.authService.driverArray, 'state', 'descending');
     }
-    console.log(`sort by State (${this.directionH})`);
+    //console.log(`sort by State (${this.directionH})`);
   }
   /*
  Event handler for clicking on the Driver heading.
@@ -261,7 +260,7 @@ export class ListComponent implements OnInit {
       this.zip_down_arrow_hidden = false;
       this.sortService.sortDrivers(this.authService.driverArray, 'zip', 'descending');
     }
-    console.log(`sort by Zipcode(${this.directionI})`);
+    //console.log(`sort by Zipcode(${this.directionI})`);
   }
     /*
    Event handler for clicking on the Driver heading.
@@ -278,6 +277,6 @@ export class ListComponent implements OnInit {
       this.phone_down_arrow_hidden = false;
       this.sortService.sortDrivers(this.authService.driverArray, 'phone', 'descending');
     }
-    console.log(`sort by phone number(${this.directionJ})`);
+    //console.log(`sort by phone number(${this.directionJ})`);
   }
 }

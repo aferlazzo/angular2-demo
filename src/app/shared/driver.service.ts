@@ -82,14 +82,14 @@ export class DriverService {
     console.info('driver.service.ts in fillDriverArray()');
 
     /******************* uncomment block for mock data *****************************
-     /*
+     /*/
      this.authService.driverArray = MOCK_DRIVERS;
 
      if (this.authService.driverArray) {
       console.info('driver.service.ts in fillDriverArray() There are ' +
           this.authService.driverArray.length + ' driver records in driverArray');
     }
-     */
+    /*/
 
     /*******************************************************************************
      *                                                                             *
@@ -98,9 +98,9 @@ export class DriverService {
      *  even 127.0.0.1:4200 when using WAMP as the local server.                   *
      *                                                                             *
      ******************* uncomment block for live data *****************************
-     /*/
+     /*
     this.getDriverList();
-    /*/
+    */
     /* *****************************************************************************/
   }
 
