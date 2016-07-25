@@ -1,4 +1,4 @@
-<div class="component-top container-fluid">
+<div class="component-top container-fluid" @initState="page_state">
   <form *ngIf="active" (ngSubmit)="add_driver(driver)" #driver_form="ngForm">
     <div class="form row">
       <div class="form-group">

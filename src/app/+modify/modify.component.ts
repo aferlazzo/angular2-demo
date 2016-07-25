@@ -1,4 +1,6 @@
-import { Component, OnInit }  from '@angular/core';
+import { Component, OnInit, Input, trigger, state, style,
+    transition, animate }     from '@angular/core';
+import {TimerWrapper}         from '@angular/core/src/facade/async';
 import { FormGroup, FormControl,
     REACTIVE_FORM_DIRECTIVES, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
@@ -13,7 +15,21 @@ import { AuthService }        from '../auth.service';
   templateUrl: 'modify.component.html',
   styleUrls: ['modify.component.css'],
   providers: [SelectService, Driver],
-  directives: [REACTIVE_FORM_DIRECTIVES]
+  directives: [REACTIVE_FORM_DIRECTIVES],
+  animations: [
+    trigger ('initState', [
+      // animation trigger name: initState. 2 states: not_started, started
+      state('not_started', style({
+        margin: '13rem 0 0 -100%'
+      })),
+      state('started', style({
+        margin: '13rem 0 0 0'
+      })),
+      transition('not_started => started', animate('100ms ease-in')),
+      transition('started => not_started', animate('100ms ease-out'))
+    ])
+  ]
+
 })
 
 export class ModifyComponent implements OnInit {
@@ -63,7 +79,18 @@ export class ModifyComponent implements OnInit {
 
     });
 
+    var timerId;
+
+    console.log("page_state", this.page_state);
+
+    timerId = TimerWrapper.setTimeout(() => {
+      this.page_state = 'started';
+      console.log("page_state", this.page_state);
+    }, 10);
+
   }
+
+  page_state="not_started";
 
   private message = {
     success: '',

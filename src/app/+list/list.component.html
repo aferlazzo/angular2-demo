@@ -4,7 +4,8 @@
       <div class="panel">
         <div class="panel-heading"></div>
         <div class="panel-body panel-flex-table">
-          <table class="flex-table table table-striped table-hover flex-widths flex-table-aligned">
+          <table class="flex-table table table-striped table-hover flex-widths flex-table-aligned"
+                 @initState="page_state">
             <thead>
             <tr>
               <th (click)="sortByDriverName()">Driver
